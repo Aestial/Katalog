@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main role="main">
+    <section class="text-center">
+      <div class="container-fluid">
+        <h2 class="">DEV</h2>
+        <div class="container-fluid bg-white">
+          <h3 class="">Dev environment</h3>
+          <div id="three-container" class=""></div>
+        </div>
+      </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+    // RETRIEVE ASSETS (Like Textures)
+    let assets = {
+        "model": "{% static 'webpack/models/siemens-logo.fbx' %}",
+    };
+</script>
+{% with 'webpack/bundle.js' as interactive_static %}
+    <script src="{% static interactive_static %}"></script>
+{% endwith %}
+{% endblock %}

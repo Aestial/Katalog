@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% load static %} {% block title %} {{ product.name }}
+{% endblock %} {% block content %}
+<main role="main">
+  <section class="text-center">
+    <div class="container-fluid">
+      <h2 class="">{{ product.name }}</h2>
+      <div class="container-fluid bg-white">
+        <h3 class="">{{ interactive.title }}</h3>
+        <div id="three-container" class=""></div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %} {% block scripts %}
+
+<script>
+  // RETRIEVE ASSETS
+  const assets = {{ assets|safe }};
+</script>
+
+<script src="{{ interactive.bundle.url|safe }}"></script>
+
+{% endblock %}
