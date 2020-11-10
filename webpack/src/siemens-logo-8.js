@@ -1,11 +1,8 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 import Stats from 'three/examples/jsm/libs/stats.module.js';
-// import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-// import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
-// import { RoughnessMipmapper } from 'three/examples/jsm/utils/RoughnessMipmapper.js';
-// import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 
 const width = window.innerWidth; // default: 672
 const height = window.innerHeight; // default: 672
@@ -27,18 +24,26 @@ function init() {
     camera.position.set(60, 180, 80);
     // Scene
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x202020);
-    scene.fog = new THREE.Fog(0xa0a0a0, 200, 1000);
+    scene.background = new THREE.Color(0x101010);
+    scene.fog = new THREE.Fog(0x606060, 200, 10000);
+    // Environment
+    new RGBELoader().setDataType(THREE.UnsignedByteType).load(assets.envmap, function( texture ) {
+        const envMap = pmremGenerator.fromEquirectangular( texture ).texture;
+        // scene.background = envMap;
+        scene.environment = envMap;
+        texture.dispose();
+        pmremGenerator.dispose();
+    });
     // Axes Helper
     const axesHelper = new THREE.AxesHelper(100);
     scene.add(axesHelper);
     // Hemisṕhere Light
-    const hemiLight = new THREE.HemisphereLight(0xbbbbbb, 0xaaaaaa);
+    const hemiLight = new THREE.HemisphereLight(0xbababa, 0x656565);
     hemiLight.position.set(0, 200, 0);
     scene.add(hemiLight);
     // Directional Light
     const dirLight = new THREE.DirectionalLight(0xffffff);
-    dirLight.position.set(50, 200, 100);
+    dirLight.position.set(-50, 200, -100);
     dirLight.castShadow = true;
     dirLight.shadow.mapSize.width = 1024;
     dirLight.shadow.mapSize.height = 1024;
@@ -55,15 +60,16 @@ function init() {
     // mesh.receiveShadow = true;
     // scene.add( mesh );
     // Grid
-    // const grid = new THREE.GridHelper( 2000, 20, 0x000000, 0x000000 );
-    // grid.material.opacity = 0.05;
-    // grid.material.transparent = true;
-    // scene.add( grid );
+    const grid = new THREE.GridHelper( 10000, 500, 0x7f7f7f, 0x7f7f7f );
+    grid.material.opacity = 0.5;
+    grid.material.transparent = true;
+    scene.add( grid );
     // Material
     const material = new THREE.MeshStandardMaterial({
-        color: 0x67798c,
+        color: 0x3a4a5f,
         roughness: 1,
-        metalness: 0,        
+        metalness: 0,      
+        envMapIntensity: 1.5,  
     });
     // Model
     const loader = new FBXLoader();
@@ -91,7 +97,12 @@ function init() {
     renderer.setSize(width, height);
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowMap;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1;
     container.appendChild(renderer.domElement);
+    // PMREM Generator
+    const pmremGenerator = new THREE.PMREMGenerator( renderer );
+    pmremGenerator.compileEquirectangularShader();
     // Orbit controls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.target.set(0, 25, 0);
