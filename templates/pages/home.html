@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} PLC Katalog {% endblock %}
+{# {% load thumbnail %} #}
+{% block content %}
+<main role="main">
+    <div class="container-fluid p-4 bg-light">
+        <div class="container text-center">
+            <p class="h3">¡Bienvenido!</p>
+            <hr />
+            <a href="https://www.ingenieria.unam.mx/" target="_blank">
+                <img src="{% static 'img/fi-color.png' %}" width="200" height="240" class="m-4" alt="Escudo FI" />
+            </a>
+            <p class="lead">Catálogo interactivo 3D del Laboratorio de Control</p>
+            <a href="http://www.fi-b.unam.mx/" target="_blank">
+                <p class="text-muted">División de Ingeniería Eléctrica</p>
+            </a>
+            <a href="https://www.ingenieria.unam.mx/" target="_blank">
+                <p class="text-muted">Facultad de Ingeniería, UNAM.</p>
+            </a>
+        </div>        
+        <div class="album py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img class="card-img-top" src=""/>
+                            <div class="card-body">
+                                <!-- <span class="h4 text-muted">
+                                    {# PLC {{ product.name }} #}
+                                </span> -->
+                                <a href="{% url 'all' %}">
+                                    <p class="card-text h5">
+                                        Ver controladores  
+                                    </p>
+                                </a>                                
+                                <div class="d-flex justify-content-between align-items-center">                                        
+                                    <small class="text-muted">
+                                        Katalog
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
