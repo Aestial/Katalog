@@ -2,8 +2,12 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container d-flex h-100 p-2">
-            <a class="navbar-brand" href="{% url 'home' %}">  
-                <img src="{% static 'img/fi-color.png' %}" width="80" height="96" class="d-inline-block" alt="" />
+            <a class="navbar-brand" href="{% url 'home' %}">
+                {% if section == 'home' %}
+                <span class="">Katalog</span>
+                {% else %}
+                <img src="{% static 'img/fi-color.png' %}" width="40" height="48" class="d-inline-block" alt="" />
+                {% endif %}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +15,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
-                    <a class="nav-item nav-link {% if section == 'home' %} active {% endif %}" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link {% if section == 'home' %} active {% endif %}" href="{% url 'home' %}">Inicio<span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link {% if section == 'products' %} active {% endif %}" href="{% url 'all' %}">Controladores<span class="sr-only">(current)</span></a>
                 </div>
             </div>
         </div>
