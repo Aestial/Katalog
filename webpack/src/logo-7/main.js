@@ -10,6 +10,8 @@ import {
 } from 'three/examples/jsm/loaders/RGBELoader.js';
 import Stats from 'three/examples/jsm/libs/stats.module.js';
 
+import PointerManager from './pointerman';
+
 const width = window.innerWidth; // default: 672
 const height = window.innerHeight; // default: 672
 const aspectRatio = width / height;
@@ -17,10 +19,7 @@ const aspectRatio = width / height;
 const container = document.getElementById("three-container");
 
 let camera, scene, renderer, stats;
-let model, interactive = [];
-let raycaster;
-let INTERSECTED;
-const mouse = new THREE.Vector2();
+let pointerman;
 
 const clock = new THREE.Clock();
 // let mixer;
@@ -31,6 +30,8 @@ function init() {
     // Camera
     camera = new THREE.PerspectiveCamera(45, width / height, 1, 2000);
     camera.position.set(60, 180, 80);
+    // Pointer Manager
+    pointerman = new PointerManager(camera);
     // Scene
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0x101010);
@@ -110,11 +111,11 @@ function init() {
             switch (child.name) {
                 case "OkButton":
                     child.material = okButtonMat;
-                    interactive.push(child);
+                    pointerman.add(child);
                     break;
                 case "EscButton":
                     child.material = escButtonMat;
-                    interactive.push(child);
+                    pointerman.add(child);
                     break;
                 case "Body":
                     child.material = bodyMat;
@@ -124,9 +125,7 @@ function init() {
         scene.add(object);
         animate();
     });
-    // Raycaster
-    raycaster = new THREE.Raycaster();
-
+   
     // Renderer
     renderer = new THREE.WebGLRenderer({
         antialias: true
@@ -148,7 +147,6 @@ function init() {
     controls.minDistance = 100;
     controls.update();
     // Events
-    document.addEventListener('mousemove', onDocumentMouseMove, false);
     window.addEventListener('resize', onWindowResize, false);
     // Stats
     stats = new Stats();
@@ -156,12 +154,6 @@ function init() {
     container.appendChild(stats.dom);
     // Initialize actions
     onWindowResize();
-}
-
-function onDocumentMouseMove(event) {
-    event.preventDefault();
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 }
 
 function onWindowResize() {
@@ -194,23 +186,6 @@ function animate() {
 }
 
 function render() {
-    // Find intersections
-    raycaster.setFromCamera(mouse, camera);
-    const intersects = raycaster.intersectObjects(interactive);
-    if (intersects.length > 0) {
-        if (INTERSECTED != intersects[0].object) {
-            
-            if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
-                
-            INTERSECTED = intersects[0].object;
-            INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-            INTERSECTED.material.emissive.setHex(0xffffff);
-        
-        }            
-    } else {
-        if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
-        
-        INTERSECTED = null;
-    }        
+    pointerman.update();
     renderer.render(scene, camera);
 }
