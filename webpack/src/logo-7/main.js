@@ -27,6 +27,16 @@ function init() {
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0x040506);
     scene.fog = new THREE.Fog(0x606060, 200, 10000);
+
+    // Axes Helper
+    // const axesHelper = new THREE.AxesHelper(100);
+    // scene.add(axesHelper);
+    // Grid
+    // const grid = new THREE.GridHelper(10000, 500, 0x7f7f7f, 0x7f7f7f);
+    // grid.material.opacity = 0.5;
+    // grid.material.transparent = true;
+    // scene.add(grid);
+
     // Environment
     new RGBELoader().setDataType(THREE.UnsignedByteType).load(assets.envmap, function (texture) {
         const envMap = pmremGenerator.fromEquirectangular(texture).texture;
@@ -35,10 +45,6 @@ function init() {
         texture.dispose();
         pmremGenerator.dispose();
     });
-    // Axes Helper
-    // const axesHelper = new THREE.AxesHelper(100);
-    // scene.add(axesHelper);
-    
     // Hemisṕhere Light
     const hemiLight = new THREE.HemisphereLight(0x050505, 0x9f9f9f);
     hemiLight.position.set(0, 100, 0);
@@ -63,12 +69,10 @@ function init() {
     // mesh.receiveShadow = true;
     // scene.add( mesh );
 
-    // Grid
-    // const grid = new THREE.GridHelper(10000, 500, 0x7f7f7f, 0x7f7f7f);
-    // grid.material.opacity = 0.5;
-    // grid.material.transparent = true;
-    // scene.add(grid);
-
+    // Textures
+    const displaymap = new THREE.TextureLoader().load( assets.displaymap );
+    displaymap.magFilter = THREE.NearestFilter;
+    displaymap.minFilter = THREE.NearestFilter;
     // Materials
     const bodyMat = new THREE.MeshStandardMaterial({
         color: 0x505B68,
@@ -76,9 +80,24 @@ function init() {
         metalness: 0.15,
     });
     const displayMat = new THREE.MeshStandardMaterial({
-        color: 0xffffa0,
-        roughness: 0.4,
+        color: 0xff1000,
+        map: displaymap,
+        roughness: 0.2,
         metalness: 0.6,
+        emissiveMap: displaymap,
+        emissive: 0xff1000,
+        emissiveIntensity: 4,
+        
+    });
+    const displayMatAmber = new THREE.MeshStandardMaterial({
+        color: 0xff4200,
+        map: displaymap,
+        roughness: 0.2,
+        metalness: 0.6,
+        emissiveMap: displaymap,
+        emissive: 0xff4200,
+        emissiveIntensity: 2.95,
+        
     });
     const screenMat = new THREE.MeshStandardMaterial({
         color: 0x000000,
@@ -96,11 +115,11 @@ function init() {
         metalness: 0,
     });
     const screenCoverMat = new THREE.MeshStandardMaterial({
-        color: 0x2f2f2f,
-        roughness: 0.065,
+        color: 0x404040,
+        roughness: 0.08,
         metalness: 0,
         transparent: true,
-        opacity: 0.5,
+        opacity: 0.31,
     });
     const buttonMat = new THREE.MeshStandardMaterial({
         color: 0x9CB7B4,
@@ -158,9 +177,7 @@ function init() {
         animate();
     });   
     // Renderer
-    renderer = new THREE.WebGLRenderer({
-        antialias: true
-    });
+    renderer = new THREE.WebGLRenderer({ antialias: true });
     container.appendChild(renderer.domElement);
     // renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(width, height);
