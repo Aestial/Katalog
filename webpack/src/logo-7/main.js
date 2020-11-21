@@ -1,28 +1,19 @@
 import * as THREE from 'three';
-import {
-    OrbitControls
-} from 'three/examples/jsm/controls/OrbitControls.js';
-import {
-    FBXLoader
-} from 'three/examples/jsm/loaders/FBXLoader.js';
-import {
-    RGBELoader
-} from 'three/examples/jsm/loaders/RGBELoader.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
+// import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import Stats from 'three/examples/jsm/libs/stats.module.js';
 
 import PointerManager from './pointerman';
 
-const width = window.innerWidth; // default: 672
-const height = window.innerHeight; // default: 672
-const aspectRatio = width / height;
-
 const container = document.getElementById("three-container");
+const width = window.innerWidth; 
+const height = window.innerHeight;
+const aspectRatio = width / height;
 
 let camera, scene, renderer, stats;
 let pointerman;
-
-const clock = new THREE.Clock();
-// let mixer;
 
 init();
 
@@ -34,7 +25,7 @@ function init() {
     pointerman = new PointerManager(camera);
     // Scene
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x101010);
+    scene.background = new THREE.Color(0x040506);
     scene.fog = new THREE.Fog(0x606060, 200, 10000);
     // Environment
     new RGBELoader().setDataType(THREE.UnsignedByteType).load(assets.envmap, function (texture) {
@@ -45,15 +36,16 @@ function init() {
         pmremGenerator.dispose();
     });
     // Axes Helper
-    const axesHelper = new THREE.AxesHelper(100);
+    // const axesHelper = new THREE.AxesHelper(100);
     // scene.add(axesHelper);
+    
     // Hemisṕhere Light
-    const hemiLight = new THREE.HemisphereLight(0xbababa, 0x656565);
-    hemiLight.position.set(0, 200, 0);
+    const hemiLight = new THREE.HemisphereLight(0x050505, 0x9f9f9f);
+    hemiLight.position.set(0, 100, 0);
     scene.add(hemiLight);
     // Directional Light
-    const dirLight = new THREE.DirectionalLight(0xffffff);
-    dirLight.position.set(-50, 200, -100);
+    const dirLight = new THREE.DirectionalLight(0x7f7f7f, 0.75);
+    dirLight.position.set(-100, 100, -100);
     dirLight.castShadow = true;
     dirLight.shadow.mapSize.width = 1024;
     dirLight.shadow.mapSize.height = 1024;
@@ -64,42 +56,67 @@ function init() {
     scene.add(dirLight);
     // Directional shadow helper
     // scene.add(new THREE.CameraHelper(dirLight.shadow.camera));
+
     // Ground
-    // const mesh = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2000, 2000 ), new THREE.MeshPhongMaterial( { color: 0x999999, depthWrite: false } ) );
+    // const mesh = new THREE.Mesh( new THREE.PlaneBufferGeometry( 10000, 10000 ), new THREE.MeshPhongMaterial( { color: 0x606060, depthWrite: false } ) );
     // mesh.rotation.x = - Math.PI / 2;
     // mesh.receiveShadow = true;
     // scene.add( mesh );
+
     // Grid
-    const grid = new THREE.GridHelper(10000, 500, 0x7f7f7f, 0x7f7f7f);
-    grid.material.opacity = 0.5;
-    grid.material.transparent = true;
+    // const grid = new THREE.GridHelper(10000, 500, 0x7f7f7f, 0x7f7f7f);
+    // grid.material.opacity = 0.5;
+    // grid.material.transparent = true;
     // scene.add(grid);
+
     // Materials
     const bodyMat = new THREE.MeshStandardMaterial({
-        color: 0x3a4a5f,
-        roughness: 1,
-        metalness: 0,
-        envMapIntensity: 1.5,
+        color: 0x505B68,
+        roughness: 0.9,
+        metalness: 0.15,
     });
-    const escButtonMat = new THREE.MeshStandardMaterial({
-        color: 0xaa4a5f,
+    const displayMat = new THREE.MeshStandardMaterial({
+        color: 0xffffa0,
+        roughness: 0.4,
+        metalness: 0.6,
+    });
+    const screenMat = new THREE.MeshStandardMaterial({
+        color: 0x000000,
+        roughness: 0.2,
+        metalness: 0,
+    });
+    const labelMat = new THREE.MeshStandardMaterial({
+        color: 0xffffff,
+        roughness: 0.6,
+        metalness: 0,
+    });
+    const labelBgMat = new THREE.MeshStandardMaterial({
+        color: 0x008283,
         roughness: 1,
         metalness: 0,
-        envMapIntensity: 1.2,
+    });
+    const screenCoverMat = new THREE.MeshStandardMaterial({
+        color: 0x2f2f2f,
+        roughness: 0.065,
+        metalness: 0,
+        transparent: true,
+        opacity: 0.5,
+    });
+    const buttonMat = new THREE.MeshStandardMaterial({
+        color: 0x9CB7B4,
+        roughness: 1,
+        metalness: 0,
+        envMapIntensity: 0.75,
     });
     const okButtonMat = new THREE.MeshStandardMaterial({
-        color: 0x3aaa5f,
+        color: 0x00A247,
         roughness: 1,
         metalness: 0,
-        envMapIntensity: 1.2,
+        envMapIntensity: 0.75,
     });
     // Model
     const loader = new FBXLoader();
     loader.load(assets.model, function (object) {
-        // Animation
-        // mixer = new THREE.AnimationMixer( object );
-        // const action = mixer.clipAction( object.animations[ 0 ] );
-        // action.play();
         // Apply material and shadows
         object.traverse(function (child) {
             // console.log(child);
@@ -109,34 +126,48 @@ function init() {
                 // console.log(child.name);
             }            
             switch (child.name) {
-                case "OkButton":
+                case "Body":
+                    child.material = bodyMat;
+                    break;
+                case "Button-Ok":
                     child.material = okButtonMat;
                     pointerman.add(child);
                     break;
-                case "EscButton":
-                    child.material = escButtonMat;
-                    pointerman.add(child);
+                case "Display":
+                    child.material = displayMat;
                     break;
-                case "Body":
-                    child.material = bodyMat;
+                case "Screen":
+                    child.material = screenMat;
+                    break;
+                case "Label":
+                    child.material = labelMat;
+                    break;
+                case "LabelBg":
+                    child.material = labelBgMat;
+                    break;
+                case "ScreenCover":
+                    child.material = screenCoverMat;
+                    break;
+                default:
+                    child.material = buttonMat.clone();
+                    pointerman.add(child);
                     break;                
             }
         });
         scene.add(object);
         animate();
-    });
-   
+    });   
     // Renderer
     renderer = new THREE.WebGLRenderer({
         antialias: true
     });
-    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+    // renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(width, height);
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFShadowMap;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1;
-    container.appendChild(renderer.domElement);
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.toneMapping = THREE.LinearToneMapping;
+    renderer.toneMappingExposure = 0.85;    
     // PMREM Generator
     const pmremGenerator = new THREE.PMREMGenerator(renderer);
     pmremGenerator.compileEquirectangularShader();
@@ -167,20 +198,16 @@ function onWindowResize() {
 
 function getParentDivWidth() {
     let width = window.innerWidth;
-    // console.log("Width " + width);
     return width;
 }
 
 function getParentDivHeight() {
     let height = window.outerHeight;
-    // console.log("Height " + height);
     return height;
 }
 
 function animate() {
     requestAnimationFrame(animate);
-    // const delta = clock.getDelta();
-    // if ( mixer ) mixer.update( delta );
     render();
     stats.update();
 }
