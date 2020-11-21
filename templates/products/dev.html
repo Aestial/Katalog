@@ -4,8 +4,8 @@
 <main role="main">
     <section class="text-center">
       <div class="title container-fluid">
-        <h4 class="text-white">DEV</h4>
-        <h5 class="text-white">Dev environment</h5>
+        <h4 class="text-white">DEV-C</h4>
+        <h5 class="text-white">Devsi environment</h5>
       </div>
       <div id="three-container" class=""></div>
     </section>
@@ -17,7 +17,9 @@
 <script>
     // RETRIEVE ASSETS (Like Textures)
     let assets = {
-        "model": "{% static 'webpack/models/siemens-logo.fbx' %}",
+        "model": "{% static 'webpack/models/siemens-logo8.fbx' %}",
+        "envmap": "{% static 'webpack/textures/empty_warehouse_01_1k.hdr' %}",
+        "displaymap": "{% static 'webpack/textures/pixelface.png' %}",
     };
 </script>
 {% with 'webpack/bundle.js' as interactive_static %}
