@@ -46,11 +46,23 @@ export default class PointerManager {
         this.pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
     }
     onDocumentPointerDown(event) {
-        event.preventDefault();        
+        event.preventDefault();
         if (this.intersected) {
+            switch(this.intersected.name) {
+                case 'Button-L':
+                    window.logoman.changeDisplayColor('off');
+                    break;
+                case 'Button-U':
+                    window.logoman.changeDisplayColor('white');
+                    break;
+                case 'Button-R':
+                    window.logoman.changeDisplayColor('amber');
+                    break;
+                case 'Button-D':
+                    window.logoman.changeDisplayColor('red');
+                    break;
+            }
             console.log(this.intersected.name + ' pressed!');
-        }
-            
-    }
-    
+        }            
+    }    
 }

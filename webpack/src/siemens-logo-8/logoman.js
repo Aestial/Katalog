@@ -55,7 +55,7 @@ export default class LogoManager {
                 metalness: 0.4,
                 emissiveMap: this.textures.displaymap,
                 emissive: 0xde0a00,
-                emissiveIntensity: 0.05,
+                emissiveIntensity: 0.025,
             }),               
         }
         this.materials = {
@@ -80,11 +80,11 @@ export default class LogoManager {
                 metalness: 0,
             }),
             screencover: new THREE.MeshStandardMaterial({
-                color: 0x404040,
-                roughness: 0.08,
+                color: 0x3a3a3a,
+                roughness: 0.1,
                 metalness: 0,
                 transparent: true,
-                opacity: 0.31,
+                opacity: 0.35,
             }),
             button: new THREE.MeshStandardMaterial({
                 color: 0x9CB7B4,

@@ -47,10 +47,10 @@ function init() {
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.toneMapping = THREE.LinearToneMapping;
-    renderer.toneMappingExposure = 0.6;
+    renderer.toneMappingExposure = 0.666;
     // Camera
     camera = new THREE.PerspectiveCamera(45, width / height, 1, 2000);
-    camera.position.set(-90, 100, 90);
+    camera.position.set(-8, 12, 8);
     // Pointer Manager
     pointerman = new PointerManager(camera);
     // Scene Manager
@@ -62,9 +62,9 @@ function init() {
     });
     // Orbit controls
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.target.set(0, 25, 0);
-    controls.maxDistance = 400;
-    controls.minDistance = 100;
+    controls.target.set(0, 4, 0);
+    controls.maxDistance = 25;
+    controls.minDistance = 10;
     controls.update();
     // Render Pass
     const renderPass = new RenderPass( sceneman.scene, camera );
