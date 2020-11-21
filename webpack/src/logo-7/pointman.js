@@ -23,15 +23,19 @@ export default class PointerManager {
         if (intersects.length > 0) {
             if (this.intersected != intersects[0].object) {
                 
-                if (this.intersected) this.intersected.material.emissive.setHex(this.intersected.currentHex);
-                    
+                if (this.intersected) {
+                    this.intersected.material.emissive.setHex(this.intersected.currentHex);
+                    this.intersected.layers.disable(BLOOM_SCENE);
+                }                    
                 this.intersected = intersects[0].object;
                 this.intersected.currentHex = this.intersected.material.emissive.getHex();
-                this.intersected.material.emissive.setHex(0xffffff);
+                this.intersected.material.emissive.setHex(0x7f7f7f);
+                this.intersected.layers.enable(BLOOM_SCENE);
             }            
         } else {
-            if (this.intersected){
+            if (this.intersected) {
                 this.intersected.material.emissive.setHex(this.intersected.currentHex);
+                this.intersected.layers.disable(BLOOM_SCENE);
             }            
             this.intersected = null;
         }        
