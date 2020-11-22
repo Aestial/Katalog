@@ -50,7 +50,7 @@ function init() {
     renderer.toneMappingExposure = 0.666;
     // Camera
     camera = new THREE.PerspectiveCamera(45, width / height, 1, 2000);
-    camera.position.set(-8, 12, 8);
+    camera.position.set(-9, 13, 8);
     // Pointer Manager
     pointerman = new PointerManager(camera);
     // Scene Manager
@@ -62,7 +62,7 @@ function init() {
     });
     // Orbit controls
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.target.set(0, 4, 0);
+    controls.target.set(0, 3, 0);
     controls.maxDistance = 25;
     controls.minDistance = 10;
     controls.update();
@@ -113,8 +113,8 @@ function onWindowResize() {
     camera.updateProjectionMatrix();
     renderer.setSize(w, h);
     // Composers
-    bloomComposer.setSize(w, h);
-    finalComposer.setSize(w, h);
+    bloomComposer.setSize(w*HD_SCALE, h*HD_SCALE);
+    finalComposer.setSize(w*HD_SCALE, h*HD_SCALE);
     render();
 }
 function getParentDivWidth() {
