@@ -1,11 +1,12 @@
 import * as THREE from 'three';
+import { layers } from './params';
 
 export default class PointerManager {
     constructor(camera){
         this.camera = camera;        
         this.raycaster = new THREE.Raycaster();        
         this.pointer = new THREE.Vector2();
-        this.targets = []; 
+        this.targets = [];
         this.intersected = null;
         // Event binding
         const pointerMoveListener = this.onDocumentPointerMove.bind(this);
@@ -25,17 +26,17 @@ export default class PointerManager {
                 
                 if (this.intersected) {
                     this.intersected.material.emissive.setHex(this.intersected.currentHex);
-                    this.intersected.layers.disable(BLOOM_SCENE);
+                    this.intersected.layers.disable(layers.BLOOM_SCENE);
                 }                    
                 this.intersected = intersects[0].object;
                 this.intersected.currentHex = this.intersected.material.emissive.getHex();
                 this.intersected.material.emissive.setHex(0x7f7f7f);
-                this.intersected.layers.enable(BLOOM_SCENE);
+                this.intersected.layers.enable(layers.BLOOM_SCENE);
             }            
         } else {
             if (this.intersected) {
                 this.intersected.material.emissive.setHex(this.intersected.currentHex);
-                this.intersected.layers.disable(BLOOM_SCENE);
+                this.intersected.layers.disable(layers.BLOOM_SCENE);
             }            
             this.intersected = null;
         }        
