@@ -11,8 +11,10 @@ export default class RenderManager {
             antialias: params.antialias,
         });
         this.dom = this.renderer.domElement;
-        this.camera = new THREE.PerspectiveCamera(45, this.width / this.height, 1, 2000);
-        this.camera.position.set(params.camPos.x, params.camPos.y, params.camPos.z);
+        this.camera = new THREE.PerspectiveCamera(45, this.width / this.height, 1, 1000);
+        this.camera.position.set(params.cam.pos.x, params.cam.pos.y, params.cam.pos.z);
+        this.camera.near = params.cam.near;
+        this.camera.far = params.cam.far;
         this.configure();
         // Events
         window.addEventListener('resize', this.onWindowResize.bind(this), false);
