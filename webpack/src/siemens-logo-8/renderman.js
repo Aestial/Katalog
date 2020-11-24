@@ -33,7 +33,7 @@ export default class RenderManager {
     }
     onWindowResize() {
         let w = window.innerWidth;
-        let h = window.outerHeight;
+        let h = window.innerHeight;
         // h = w / aspectRatio;
         this.camera.aspect = w / h;
         this.camera.updateProjectionMatrix();

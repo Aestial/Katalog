@@ -34,7 +34,7 @@ export default class EffectManager {
         ssaoPass.kernelRadius = 2;
         ssaoPass.minDistance = 0;
         ssaoPass.maxDistance = 0.1;
-        ssaoPass.kernelSize = 32;
+        ssaoPass.kernelSize = 16;
         // Final Pass
         const finalPass = new ShaderPass(
             new THREE.ShaderMaterial( {
@@ -81,7 +81,7 @@ export default class EffectManager {
     }
     onWindowResize() {
         let w = window.innerWidth;
-        let h = window.outerHeight;
+        let h = window.innerHeight;
         // Composers
         this.setSize(w, h);
         // render();

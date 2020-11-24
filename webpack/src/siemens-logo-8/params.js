@@ -12,9 +12,9 @@ export const renderman = {
     autoClear: true,
     antialias: true,
     camPos: {
-        x: -10,
+        x: -12,
         y: 12,
-        z: 10,
+        z: 12,
     },
     exposure: 0.65,
 }
