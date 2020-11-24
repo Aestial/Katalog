@@ -21,9 +21,9 @@ export default class EffectManager {
         const renderPass = new RenderPass( scene, camera );
         // Bloom Pass (Unreal)
         const bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.outerHeight ), 1.5, 0.4, 0.85);
-        bloomPass.threshold = params.bloomThreshold;
-        bloomPass.strength = params.bloomStrength;
-        bloomPass.radius = params.bloomRadius;
+        bloomPass.threshold = params.bloom.threshold;
+        bloomPass.strength = params.bloom.strength;
+        bloomPass.radius = params.bloom.radius;
         // Bloom Composer
         this.bloomComposer = new EffectComposer(renderer);
         this.bloomComposer.renderToScreen = false;
@@ -31,10 +31,10 @@ export default class EffectManager {
         this.bloomComposer.addPass(bloomPass);
         // SSAO Pass
         const ssaoPass = new SSAOPass(scene, camera, renderer.width, renderer.height);
-        ssaoPass.kernelRadius = 2;
-        ssaoPass.minDistance = 0;
-        ssaoPass.maxDistance = 0.1;
-        ssaoPass.kernelSize = 16;
+        ssaoPass.kernelRadius = params.ssao.kernelRadius;
+        ssaoPass.kernelSize = params.ssao.kernelSize;
+        ssaoPass.minDistance = params.ssao.minDistance;
+        ssaoPass.maxDistance = params.ssao.maxDistance;
         // Final Pass
         const finalPass = new ShaderPass(
             new THREE.ShaderMaterial( {
