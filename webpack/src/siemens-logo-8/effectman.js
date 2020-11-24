@@ -21,9 +21,9 @@ export default class EffectManager {
         const renderPass = new RenderPass( scene, camera );
         // Bloom Pass (Unreal)
         const bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.outerHeight ), 1.5, 0.4, 0.85);
-        bloomPass.threshold = params.bloomThreshold;
-        bloomPass.strength = params.bloomStrength;
-        bloomPass.radius = params.bloomRadius;
+        bloomPass.threshold = params.bloom.threshold;
+        bloomPass.strength = params.bloom.strength;
+        bloomPass.radius = params.bloom.radius;
         // Bloom Composer
         this.bloomComposer = new EffectComposer(renderer);
         this.bloomComposer.renderToScreen = false;
@@ -31,10 +31,10 @@ export default class EffectManager {
         this.bloomComposer.addPass(bloomPass);
         // SSAO Pass
         const ssaoPass = new SSAOPass(scene, camera, renderer.width, renderer.height);
-        ssaoPass.kernelRadius = 2;
-        ssaoPass.minDistance = 0;
-        ssaoPass.maxDistance = 0.1;
-        ssaoPass.kernelSize = 32;
+        ssaoPass.kernelRadius = params.ssao.kernelRadius;
+        ssaoPass.kernelSize = params.ssao.kernelSize;
+        ssaoPass.minDistance = params.ssao.minDistance;
+        ssaoPass.maxDistance = params.ssao.maxDistance;
         // Final Pass
         const finalPass = new ShaderPass(
             new THREE.ShaderMaterial( {
@@ -42,9 +42,22 @@ export default class EffectManager {
                     baseTexture: { value: null },
                     bloomTexture: { value: this.bloomComposer.renderTarget2.texture }
                 },
-                vertexShader: document.getElementById( 'vertexshader' ).textContent,
-                fragmentShader: document.getElementById( 'fragmentshader' ).textContent,
-                defines: {}
+                vertexShader: `
+                varying vec2 vUv;
+                void main() {
+                    vUv = uv;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+                }`,
+                fragmentShader: `
+                uniform sampler2D baseTexture;
+                uniform sampler2D bloomTexture;
+
+                varying vec2 vUv;
+
+                void main() {
+                    gl_FragColor = ( texture2D( baseTexture, vUv ) + vec4( 1.0 ) * texture2D( bloomTexture, vUv ) );
+                }`,
+                defines: {},
             } ), "baseTexture"
         );
         finalPass.needsSwap = true;
@@ -81,7 +94,7 @@ export default class EffectManager {
     }
     onWindowResize() {
         let w = window.innerWidth;
-        let h = window.outerHeight;
+        let h = window.innerHeight;
         // Composers
         this.setSize(w, h);
         // render();
