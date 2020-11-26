@@ -20,7 +20,7 @@ export const effectman = {
     },
     ssao: {
         kernelRadius: 2,
-        kernelSize: 16,
+        kernelSize: 32,
         minDistance: 0,
         maxDistance: 0.1,   
     },
@@ -35,7 +35,7 @@ export const renderman = {
             z: 12,
         },
         near: 6,
-        far: 25,
+        far: 50,
     },    
     exposure: 0.65,
 };

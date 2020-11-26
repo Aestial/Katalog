@@ -38,7 +38,9 @@ function init() {
 }
 
 function animate() {
-    requestAnimationFrame(animate);
+    setTimeout(() => {
+        requestAnimationFrame(animate);
+    }, 1000 / 30);
     render();
 }
 function render() {
