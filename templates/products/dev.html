@@ -3,12 +3,72 @@
 
 {% block content %}
 <main role="main">
-    <section class="text-center">
-      <div class="title container-fluid">
-        <h4 class="text-white">DEV-C</h4>
-        <h5 class="text-white">Devsi environment</h5>
+    <section class="">
+      <div class="container-fluid title text-center text-light">
+        <span class="h5">DEV-C</span>
+        <p class="">Devsi environment</p>
       </div>
       <div id="three-container" class=""></div>
+
+      <!--Modal Triggers -->
+      <div class="container d-flex justify-content-between">
+        <!-- Button trigger left modal -->
+        <button type="button" class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#leftModal">
+          Índice
+        </button>
+        <!-- Button trigger right modal -->
+        <button type="button" class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#rightModal">
+          Información
+        </button>
+      </div>
+      <!--Left Modal -->      
+      <div class="modal left fade" id="leftModal" tabindex="-1" role="dialog" aria-labelledby="leftModalLabel" aria-hidden="true">
+        <div class="modal-dialog text-light" role="document">
+          <div class="modal-content bg-transparent bg-backdrop-blur">
+            <div class="modal-header">
+              <h5 class="modal-title" id="leftModalLabel">Índice</h5>
+              <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              INDEX Content
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-outline-info">Vuelve a comenzar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Right Modal -->
+      <div class="modal right fade" id="rightModal" tabindex="-1" role="dialog" aria-labelledby="rightModalLabel" aria-hidden="true">
+        <div class="modal-dialog text-light" role="document">
+          <div class="modal-content bg-transparent bg-backdrop-blur">
+            <div class="modal-header">
+              <h5 class="modal-title" id="rightModalLabel">Información</h5>
+              <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body p-5">
+              Logo (eigene Schreibweise LOGO! oder SIPLUS LOGO!) ist ein DDC-Modul (englisch Direct Digital Control), also eine kleine speicherprogrammierbare Steuerung (SPS) der Siemens AG. Sie entspricht baulich der DIN 43880, sodass sie auf die Hutschiene eines Verteilers passt. Beispielanwendungen dabei sind Beleuchtungssteuerung, Rollladensteuerung oder auch einfache Automatisierungen.
+              </br></br>
+              <h6 class="font-weight-bold">Programmierung</h6>
+              Das Programm für die Steuerung wird entweder direkt am Gerät mit den Tasten oder komfortabler mit der Software LogoSoft Comfort am PC erstellt. Dabei wird ein grafischer Schaltplan in Funktionsplan (FUP) oder Kontaktplan (KOP) aus logischen Gattern per Drag and Drop gezeichnet. Andere Programmiersprachen, wie sie in der Norm EN 61131 spezifiziert sind, werden nicht unterstützt. Neben acht Logikfunktionen (UND, ODER, XOR usw.) sind weitere Sonderfunktionen (z. B. Ein- und Ausschaltverzögerung, Betriebsstunden- und Impulszähler, Selbsthalterelais, PI-Regler u. v. m.) integriert. LogoSoft Comfort erlaubt außerdem, das Programm in einem Simulator zu testen, ohne es in die Steuerung übertragen zu müssen.
+              </br></br>
+              <h6 class="font-weight-bold">Ausbaumöglichkeiten</h6>
+              Durch Erweiterungsmodule kann die LOGO! auf bis zu 24 digitale Eingänge, 20 digitale Ausgänge, 8 analoge Eingänge und 8 analoge Ausgänge ausgebaut werden (ab Version LOGO!8) und kann somit auch komplexere Anlagen steuern. Des Weiteren kann sie mit einem Kommunikationsmodul für AS-Interface sowie für KNX (früher: EIB = Europäischer Installations-Bus) ausgestattet werden. Ferner gibt es die Steuerung in Varianten mit oder ohne Display. Ab Version 0BA6 kann zusätzlich ein externes Display (LOGO! TD) verwendet werden. Die 2011 eingeführte Version 0BA7 verfügt über einen Slot für SD-Karten sowie über eine Ethernetschnittstelle. Somit ist es möglich, mehrere LOGO! miteinander zu vernetzen (bis zu 9 Teilnehmer). Auch die Kommunikation mit Bedienpanels und anderen Siemenssteuerungen ist möglich.
+            </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Cerrar</button>
+              <!-- <button type="button" class="btn btn-outline-primary">Vuelve a comenzar</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
 </main>
 {% endblock %}
