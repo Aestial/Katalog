@@ -4,9 +4,10 @@ import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
 import { layers } from './params';
 
 export default class LogoManager {
-    constructor(pointerman, callback){
+    constructor(pointerman, callback, labelman){
         this.pointerman = pointerman;
         this.callback = callback;
+        this.labelman = labelman;
         this.loadTextures();
         this.createMaterials();
         this.createModel();
@@ -116,18 +117,16 @@ export default class LogoManager {
         if (child.isMesh) {
             child.castShadow = true;
             child.receiveShadow = true;
+            let event;
             switch (child.name) {
                 case "Body":
                     child.material = this.materials.body;
                     break;
-                case "Button-Ok":
-                    child.material = this.materials.okbutton;
-                    this.pointerman.add(child);
-                    break;
                 case "Display":
                     child.layers.enable(layers.BLOOM_SCENE);
+                    // this.labelman.create(child, "Display", "Display information");
                     child.material = this.displayMaterials.white;
-                    this.display = child;                    
+                    this.display = child;  
                     break;
                 case "Screen":
                     child.material = this.materials.screenbg;
@@ -142,11 +141,63 @@ export default class LogoManager {
                     child.layers.enable(layers.BLOOM_SCENE);
                     child.material = this.materials.screencover;
                     break;
-                default:
+                case 'Button-L':
                     child.material = this.materials.button.clone();
-                    this.pointerman.add(child);                    
+                    event = function () {
+                        window.logoman.changeDisplayColor('off');
+                        this.displayInfo(child.name, "Botón de navegación");
+                    }.bind(this);
+                    this.pointerman.addEvent(child, event);
+                    break;
+                case 'Button-U':
+                    child.material = this.materials.button.clone();
+                    event = function () {
+                        window.logoman.changeDisplayColor('white');
+                        this.displayInfo(child.name, "Botón de navegación");
+                    }.bind(this);
+                    this.pointerman.addEvent(child, event);
+                    break;
+                case 'Button-R':
+                    child.material = this.materials.button.clone();
+                    event = function () {
+                        window.logoman.changeDisplayColor('amber');
+                        this.displayInfo(child.name, "Botón de navegación");
+                    }.bind(this);
+                    this.pointerman.addEvent(child, event);
+                    break;
+                case 'Button-D':
+                    child.material = this.materials.button.clone();
+                    event = function () {
+                        window.logoman.changeDisplayColor('red');
+                        this.displayInfo(child.name, "Botón de navegación");
+                    }.bind(this);
+                    this.pointerman.addEvent(child, event);
+                    break;
+                case "Button-Ok":
+                    child.material = this.materials.okbutton;
+                    event = function () {
+                        this.displayInfo(child.name, "Botón OK descripción");
+                    }.bind(this);
+                    this.pointerman.addEvent(child, event);
+                    // this.labelman.create(child, "Botones", "Botokobmovnboi vni'ran vbionaf");
+                    break;
+                case "Button-Esc":
+                    child.material = this.materials.button.clone();
+                    event = function () {
+                        this.displayInfo(child.name, "Botón ESC descripción");
+                    }.bind(this);
+                    this.pointerman.addEvent(child, event);
+                    // this.labelman.create(child, "Botones", "Botokobmovnboi vni'ran vbionaf");
+                    break;
+                default:
                     break;                
             }
         }
+        console.log(child);
+    }
+    displayInfo(name, content) {
+        $('#rightModal').modal('show');
+        $('#rightModalLabel').text(name);
+        $('#rightModal .modal-body').text(content);
     }
 }

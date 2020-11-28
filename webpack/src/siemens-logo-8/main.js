@@ -5,9 +5,10 @@ import PointerManager from './pointman';
 import LogoManager from './logoman';
 import ControlManager from './controlman';
 import StatsManager from './statsman';
+import LabelManager from './labelman';
 
 let renderman, sceneman, effectman;
-let logoman, pointerman;
+let logoman, pointerman, labelman;
 let statsman;
 
 init();
@@ -19,12 +20,14 @@ function init() {
     // Pointer Manager
     pointerman = new PointerManager(renderman.camera);
     // Scene Manager
-    sceneman = new SceneManager(renderman.renderer);   
+    sceneman = new SceneManager(renderman.renderer);
+    // Label Manager
+    labelman = new LabelManager(renderman.camera, sceneman.scene, pointerman);
     // LOGO Manager
     logoman = new LogoManager(pointerman, object => {
         sceneman.add(object);
         animate();
-    });    
+    }, labelman);
     // Effect Manager
     effectman = new EffectManager(renderman.camera, renderman.renderer, sceneman.scene);
     // Control Manager
@@ -45,6 +48,7 @@ function animate() {
 }
 function render() {
     pointerman.update();
+    // labelman.update();
     renderman.clear();
     effectman.render();
     statsman.update();
