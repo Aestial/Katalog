@@ -9,6 +9,7 @@ import { effectman  as params, layers } from './params';
 
 export default class EffectManager {
     constructor(camera, renderer, scene) {
+        this.camera = camera;
         this.renderer = renderer;
         this.scene = scene;
         // Materials
@@ -18,25 +19,25 @@ export default class EffectManager {
         this.bloomLayer = new THREE.Layers();
         this.bloomLayer.set(layers.BLOOM_SCENE);
         // Render Pass
-        const renderPass = new RenderPass( scene, camera );
+        this.renderPass = new RenderPass( this.scene, this.camera );
         // Bloom Pass (Unreal)
-        const bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.outerHeight ), 1.5, 0.4, 0.85);
-        bloomPass.threshold = params.bloom.threshold;
-        bloomPass.strength = params.bloom.strength;
-        bloomPass.radius = params.bloom.radius;
+        this.bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.outerHeight ), 1.5, 0.4, 0.85);
+        this.bloomPass.threshold = params.bloom.threshold;
+        this.bloomPass.strength = params.bloom.strength;
+        this.bloomPass.radius = params.bloom.radius;
         // Bloom Composer
-        this.bloomComposer = new EffectComposer(renderer);
+        this.bloomComposer = new EffectComposer(this.renderer);
         this.bloomComposer.renderToScreen = false;
-        this.bloomComposer.addPass(renderPass);
-        this.bloomComposer.addPass(bloomPass);
+        this.bloomComposer.addPass(this.renderPass);
+        this.bloomComposer.addPass(this.bloomPass);
         // SSAO Pass
-        const ssaoPass = new SSAOPass(scene, camera, renderer.width, renderer.height);
-        ssaoPass.kernelRadius = params.ssao.kernelRadius;
-        ssaoPass.kernelSize = params.ssao.kernelSize;
-        ssaoPass.minDistance = params.ssao.minDistance;
-        ssaoPass.maxDistance = params.ssao.maxDistance;
+        this.ssaoPass = new SSAOPass(this.scene, this.camera, this.renderer.width, this.renderer.height);
+        this.ssaoPass.kernelRadius = params.ssao.kernelRadius;
+        this.ssaoPass.kernelSize = params.ssao.kernelSize;
+        this.ssaoPass.minDistance = params.ssao.minDistance;
+        this.ssaoPass.maxDistance = params.ssao.maxDistance;
         // Final Pass
-        const finalPass = new ShaderPass(
+        this.finalPass = new ShaderPass(
             new THREE.ShaderMaterial( {
                 uniforms: {
                     baseTexture: { value: null },
@@ -60,12 +61,12 @@ export default class EffectManager {
                 defines: {},
             } ), "baseTexture"
         );
-        finalPass.needsSwap = true;
+        this.finalPass.needsSwap = true;
         // Final Composer
-        this.finalComposer = new EffectComposer(renderer);
-        this.finalComposer.addPass(renderPass);
-        this.finalComposer.addPass(ssaoPass);
-        this.finalComposer.addPass(finalPass);
+        this.finalComposer = new EffectComposer(this.renderer);
+        this.finalComposer.addPass(this.renderPass);
+        this.finalComposer.addPass(this.ssaoPass);
+        this.finalComposer.addPass(this.finalPass);
          // Events
          window.addEventListener('resize', this.onWindowResize.bind(this), false);
          this.onWindowResize();

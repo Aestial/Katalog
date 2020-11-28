@@ -7,6 +7,7 @@ export default class PointerManager {
         this.raycaster = new THREE.Raycaster();        
         this.pointer = new THREE.Vector2();
         this.targets = [];
+        this.events = {};
         this.intersected = null;
         // Event binding
         const pointerMoveListener = this.onDocumentPointerMove.bind(this);
@@ -16,6 +17,10 @@ export default class PointerManager {
     }
     add(mesh){
         this.targets.push(mesh);
+    }
+    addEvent(target, event) {
+        this.targets.push(target);
+        this.events[target.name] = event; 
     }
     update() {
         // Find intersections
@@ -39,7 +44,7 @@ export default class PointerManager {
                 this.intersected.layers.disable(layers.BLOOM_SCENE);
             }            
             this.intersected = null;
-        }        
+        }
     }
     onDocumentPointerMove(event) {
         event.preventDefault();
@@ -49,20 +54,7 @@ export default class PointerManager {
     onDocumentPointerDown(event) {
         event.preventDefault();
         if (this.intersected) {
-            switch(this.intersected.name) {
-                case 'Button-L':
-                    window.logoman.changeDisplayColor('off');
-                    break;
-                case 'Button-U':
-                    window.logoman.changeDisplayColor('white');
-                    break;
-                case 'Button-R':
-                    window.logoman.changeDisplayColor('amber');
-                    break;
-                case 'Button-D':
-                    window.logoman.changeDisplayColor('red');
-                    break;
-            }
+            this.events[this.intersected.name]();
             console.log(this.intersected.name + ' pressed!');
         }            
     }    
