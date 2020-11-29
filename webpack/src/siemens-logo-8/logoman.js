@@ -59,7 +59,7 @@ export default class LogoManager {
                 emissive: 0xde0a00,
                 emissiveIntensity: 0.025,
             }),               
-        }
+        };
         this.materials = {
             body: new THREE.MeshStandardMaterial({
                 color: 0x505B68,
@@ -124,8 +124,8 @@ export default class LogoManager {
                     break;
                 case "Display":
                     child.layers.enable(layers.BLOOM_SCENE);
-                    // this.labelman.create(child, "Display", "Display information");
-                    child.material = this.displayMaterials.white;
+                    this.labelman.create(child, "Display", "Display information");
+                    child.material = this.displayMaterials.red;
                     this.display = child;  
                     break;
                 case "Screen":
@@ -179,7 +179,7 @@ export default class LogoManager {
                         this.displayInfo(child.name, "Botón OK descripción");
                     }.bind(this);
                     this.pointerman.addEvent(child, event);
-                    // this.labelman.create(child, "Botones", "Botokobmovnboi vni'ran vbionaf");
+                    this.labelman.create(child, "Botones", "Botokobmovnboi vni'ran vbionaf");
                     break;
                 case "Button-Esc":
                     child.material = this.materials.button.clone();

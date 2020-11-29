@@ -22,7 +22,7 @@ function init() {
     // Scene Manager
     sceneman = new SceneManager(renderman.renderer);
     // Label Manager
-    labelman = new LabelManager(renderman.camera, sceneman.scene, pointerman);
+    labelman = new LabelManager(container, renderman.camera, sceneman.scene);
     // LOGO Manager
     logoman = new LogoManager(pointerman, object => {
         sceneman.add(object);
@@ -31,7 +31,7 @@ function init() {
     // Effect Manager
     effectman = new EffectManager(renderman.camera, renderman.renderer, sceneman.scene);
     // Control Manager
-    new ControlManager(renderman.camera, renderman.dom);
+    new ControlManager(renderman.camera, labelman.dom);
     // Stats
     statsman = new StatsManager(container);
 
@@ -48,7 +48,7 @@ function animate() {
 }
 function render() {
     pointerman.update();
-    // labelman.update();
+    labelman.update();
     renderman.clear();
     effectman.render();
     statsman.update();
