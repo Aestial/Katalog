@@ -37,4 +37,15 @@ footer {
     z-index: -10;
 }
 
-  }
+.label {
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    border: 1px solid white;
+    border-radius: 12px;
+    background: rgba( 0, 0, 0, .6 );
+    color: #FFF;
+    font-family: sans-serif;
+    cursor: pointer;     /* change the cursor to a hand when over us */
+    user-select: none;   /* don't let the text get selected */
+}

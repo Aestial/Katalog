@@ -27,6 +27,17 @@ export const effectman = {
         maxDistance: 0.1,   
     },
 };
+export const labelman = {
+    origin: {
+        x: 0,
+        y: 0,
+        z: 0,
+    },
+    opacity: {
+        visible: 1.0,
+        hidden: 0.25,
+    },
+};
 export const lightman = {
     dir: {
         color: 0x7f7f7f,

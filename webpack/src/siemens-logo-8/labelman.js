@@ -1,62 +1,60 @@
 import * as THREE from 'three';
+import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
+
+import { labelman  as params } from './params';
 
 export default class LabelManager {
-    constructor(camera, scene, pointerman) {
+    constructor(container, camera, scene) {
+        this.container = container;
         this.camera = camera;
         this.scene = scene;
-        this.pointerman = pointerman;
-        // this.container = document.querySelector('#labels');
-        // this.elements = [];
-        // this.tempWorldPos = new THREE.Vector3();
+        this.renderer = new CSS2DRenderer();
+        this.dom = this.renderer.domElement;
         this.index = 0;
+        this.origin = new THREE.Vector3(params.origin.x, params.origin.y, params.origin.z);
+        this.elements = [];
+        this.configure();
+        // Events
+        window.addEventListener('resize', this.onWindowResize.bind(this), false);
+        this.onWindowResize();        
+    }
+    configure() {
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.dom.style.position = 'absolute';
+        this.dom.style.top = '0px';
+        this.container.appendChild(this.dom);
     }
     create(mesh, name, content) {
-        // const label = document.createElement('div');
-        // label.textContent = ++this.index;
-        // label.onclick = function () {
-        //     this.displayInfo(name, content);
-        // }.bind(this);
-        // this.container.appendChild(label);
-        const index = ++this.index;
-        // const label = new MeshText2D(index, { 
-        //     align: textAlign.bottom, 
-        //     font: '100px Helvetica', 
-        //     fillStyle: 'cyan',
-        //     background: 'white',
-        //     antialias: true,
-        // });
-        label.name = 'label-' + (index);
-        label.scale.set(0.01, 0.01, 0.01);
-        // label.layers.disable(layers.BLOOM_SCENE);
-        console.log(label);
-        label.position.copy(mesh.position);
-        const event = () => {
+        const labelDiv = document.createElement('div');
+        labelDiv.className = 'label';
+        // labelDiv.textContent = name;
+        labelDiv.textContent = ++this.index;
+        labelDiv.onclick = function () {
             this.displayInfo(name, content);
-        };
-        this.scene.add(label);
-        this.pointerman.addEvent(label, event);
-        // this.elements.push({mesh, label});
+        }.bind(this);
+        const label = new CSS2DObject(labelDiv);
+        label.position.copy(mesh.position);
+        mesh.add(label);
+        this.elements.push({ label, labelDiv });
     }
     displayInfo(name, content) {
         $('#rightModal').modal('show');
         $('#rightModalLabel').text(name);
         $('#rightModal .modal-body').text(content);
     }
+    onWindowResize() {
+        let w = window.innerWidth;
+        let h = window.innerHeight;
+        this.renderer.setSize(w, h);
+    }
     update() {
-        this.elements.forEach( elem => {
-            const {mesh, label} = elem;
-            // console.log(mesh, label.textContent);
-            // Get the position of the center of the mesh
-            mesh.updateWorldMatrix(true, false);
-            mesh.getWorldPosition(this.tempWorldPos);
-            // Get the normalized screen coordinate of that position
-            // x and y will be in the -1 to +1 range with x = -1 being
-            // on the left and y = -1 being on the bottom
-            this.tempWorldPos.project(this.camera);
-            // Convert the normalized position to CSS coordinates
-            const x = (this.tempWorldPos.x *  0.5 + 0.5) * window.innerWidth;
-            const y = (this.tempWorldPos.y * -0.5 + 0.5) * window.innerHeight;
-            label.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
+        this.elements.forEach((elem) => {
+            const { label, labelDiv} = elem;
+            const meshDistance = this.camera.position.distanceTo(this.origin);
+            const labelDistance = this.camera.position.distanceTo(label.position);
+            const isBehindObject = labelDistance > meshDistance;
+            labelDiv.style.opacity = isBehindObject ? params.opacity.hidden : params.opacity.visible;
         });
+        this.renderer.render(this.scene, this.camera);
     }
 }
