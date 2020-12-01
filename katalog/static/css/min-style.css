@@ -24,7 +24,7 @@ footer {
 /* OVERLAY TITLE */
 .title {
     position: absolute;
-    top: 26px;
+    top: 50px;
     z-index: -1;
 }
 /* FULLSCREEN 3D CANVAS */
