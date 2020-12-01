@@ -6,6 +6,7 @@ import LogoManager from './logoman';
 import ControlManager from './controlman';
 import StatsManager from './statsman';
 import LabelManager from './labelman';
+import SlidesManager from './slidesman';
 
 let renderman, sceneman, effectman;
 let logoman, pointerman, labelman;
@@ -34,6 +35,8 @@ function init() {
     new ControlManager(renderman.camera, labelman.dom);
     // Stats
     statsman = new StatsManager(container);
+
+    new SlidesManager(renderman.camera);
 
     // Initialize actions
     window.logoman = logoman;

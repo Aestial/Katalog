@@ -19,6 +19,7 @@ export default class RenderManager {
     }
     clear() {
         this.renderer.clear();
+        // console.log(this.camera.position);
     }
     configure() {
         this.camera.position.set(params.cam.pos.x, params.cam.pos.y, params.cam.pos.z);

@@ -29,14 +29,15 @@ export default class LabelManager {
         labelDiv.className = 'label';
         // labelDiv.textContent = name;
         labelDiv.textContent = ++this.index;
-        const onClick = function () {
+        const onInteract = function (evt) {
             this.displayInfo(name, content);
+            evt.preventDefault();
         }.bind(this);
-        labelDiv.onclick = onClick;
+        labelDiv.onpointerdown = onInteract;
         const label = new CSS2DObject(labelDiv);
         label.position.copy(mesh.position);
         mesh.add(label);
-        this.elements.push({ label, labelDiv, onClick });
+        this.elements.push({ label, labelDiv, onInteract });
     }
     displayInfo(name, content) {
         $('#rightModal').modal('show');
@@ -50,13 +51,13 @@ export default class LabelManager {
     }
     update() {
         this.elements.forEach((elem) => {
-            const { label, labelDiv, onClick} = elem;
+            const { label, labelDiv, onInteract} = elem;
             const meshDistance = this.camera.position.distanceTo(this.origin);
             const labelDistance = this.camera.position.distanceTo(label.position);
             const isBehindObject = labelDistance > meshDistance;
             labelDiv.style.opacity = isBehindObject ? params.opacity.hidden : params.opacity.visible;
             labelDiv.style.cursor = isBehindObject ? 'default' : 'pointer';
-            labelDiv.onclick = isBehindObject ? null : onClick;
+            labelDiv.onpointerdown = isBehindObject ? null : onInteract;
         });
         this.renderer.render(this.scene, this.camera);
     }
