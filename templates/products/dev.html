@@ -4,13 +4,15 @@
 {% block content %}
 <main role="main">
     <section class="">
+      <!-- Title -->
       <div class="container-fluid title text-center text-light">
         <span class="h5">DEV-C</span>
         <p class="">Devsi environment</p>
       </div>
+      <!-- WebGL Canvas -->
       <div id="three-container" class=""></div>
 
-      <!--Modal Triggers -->
+      <!-- Modal Triggers -->
       <div class="container d-flex justify-content-between">
         <!-- Button trigger left modal -->
         <button type="button" class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#leftModal">
@@ -21,10 +23,38 @@
           Información
         </button>
       </div>
+
+      <!-- Slides carousel -->
+      <div class="container-fluid footer d-flex justify-content-center">
+        <div class="text-light col-10 col-md-8 col-lg-6">
+          <div id="slidesCarousel" class="carousel slide bg-dark-transparent bg-backdrop-blur border-round-light-25" data-ride="carousel">
+            <div class="carousel-inner text-center">
+              <div class="carousel-item align-middle active">
+                LOGO!
+              </div>
+              <div class="carousel-item align-middle">
+                Display
+              </div>
+              <div class="carousel-item align-middle">
+                Name 3
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#slidesCarousel" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#slidesCarousel" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       <!--Left Modal -->      
       <div class="modal left fade" id="leftModal" tabindex="-1" role="dialog" aria-labelledby="leftModalLabel" aria-hidden="true">
         <div class="modal-dialog text-light" role="document">
-          <div class="modal-content bg-transparent bg-backdrop-blur">
+          <div class="modal-content bg-dark-transparent bg-backdrop-blur">
             <div class="modal-header">
               <h5 class="modal-title" id="leftModalLabel">Índice</h5>
               <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
@@ -41,10 +71,11 @@
           </div>
         </div>
       </div>
+
       <!--Right Modal -->
       <div class="modal right fade" id="rightModal" tabindex="-1" role="dialog" aria-labelledby="rightModalLabel" aria-hidden="true">
         <div class="modal-dialog text-light" role="document">
-          <div class="modal-content bg-transparent bg-backdrop-blur">
+          <div class="modal-content bg-dark-transparent bg-backdrop-blur">
             <div class="modal-header">
               <h5 class="modal-title" id="rightModalLabel">Información</h5>
               <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
@@ -59,8 +90,7 @@
               </br></br>
               <h6 class="font-weight-bold">Ausbaumöglichkeiten</h6>
               Durch Erweiterungsmodule kann die LOGO! auf bis zu 24 digitale Eingänge, 20 digitale Ausgänge, 8 analoge Eingänge und 8 analoge Ausgänge ausgebaut werden (ab Version LOGO!8) und kann somit auch komplexere Anlagen steuern. Des Weiteren kann sie mit einem Kommunikationsmodul für AS-Interface sowie für KNX (früher: EIB = Europäischer Installations-Bus) ausgestattet werden. Ferner gibt es die Steuerung in Varianten mit oder ohne Display. Ab Version 0BA6 kann zusätzlich ein externes Display (LOGO! TD) verwendet werden. Die 2011 eingeführte Version 0BA7 verfügt über einen Slot für SD-Karten sowie über eine Ethernetschnittstelle. Somit ist es möglich, mehrere LOGO! miteinander zu vernetzen (bis zu 9 Teilnehmer). Auch die Kommunikation mit Bedienpanels und anderen Siemenssteuerungen ist möglich.
-            </div>
-            
+            </div>            
             <div class="modal-footer">
               <button type="button" class="btn btn-outline-light" data-dismiss="modal">Cerrar</button>
               <!-- <button type="button" class="btn btn-outline-primary">Vuelve a comenzar</button> -->
