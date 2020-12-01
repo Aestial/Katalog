@@ -4,11 +4,13 @@
 
 {% block content %}
 <main role="main">
-  <section class="text-center">
-    <div class="title container-fluid">
-      <h4 class="text-white">{{ product.name }}</h4>
-      <h6 class="text-white">{{ interactive.title }}</h6>      
+  <section class="">
+    <!-- Title -->
+    <div class="container-fluid title text-center text-light">
+      <span class="h5">{{ product.name }}</span>
+      <p class="">{{ interactive.title }}</p>
     </div>
+    <!-- WebGL Canvas -->
     <div id="three-container" class=""></div>
 
     <!--Modal Triggers -->
