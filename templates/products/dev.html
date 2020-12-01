@@ -1,29 +1,28 @@
 {% extends 'min.html' %}
 {% load static %}
+{% block title %} Development environment {% endblock %}
+{% block name %} DEV-ENV {% endblock %}
 
 {% block content %}
 <main role="main">
     <section class="">
-      <!-- Title -->
-      <div class="container-fluid title text-center text-light">
-        <span class="h5">DEV-C</span>
-        <p class="">Devsi environment</p>
-      </div>
       <!-- WebGL Canvas -->
       <div id="three-container" class=""></div>
-
-      <!-- Modal Triggers -->
-      <div class="container d-flex justify-content-between">
+      <!-- Name -->
+      <div class="d-none d-lg-block container-fluid title text-center text-light">
+        <p class="">Development environment</p>
+      </div>
+      <!-- Index button -->
+      <div class="container d-flex justify-content-between">       
         <!-- Button trigger left modal -->
         <button type="button" class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#leftModal">
           Índice
         </button>
-        <!-- Button trigger right modal -->
-        <button type="button" class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#rightModal">
-          Información
-        </button>
+         <!-- Name -->
+         <div class="d-block d-lg-none container-fluid text-right text-light">
+          <p class="">Development environment</p>
+        </div>
       </div>
-
       <!-- Slides carousel -->
       <div class="container-fluid footer d-flex justify-content-center">
         <div class="text-light col-10 col-md-8 col-lg-6">
