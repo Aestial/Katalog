@@ -6,8 +6,9 @@ export default class SlidesManager {
         this.camera = camera;
         this.positions = params.positions;
         $('#slidesCarousel').carousel({
-            interval: 4500,
-            keyboard: false,
+            interval: false, //4500,
+            keyboard: true,
+            ride: true,
         });
         $('#slidesCarousel').on('slide.bs.carousel', (e) => {
             // do something…

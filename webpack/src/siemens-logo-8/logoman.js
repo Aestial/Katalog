@@ -145,7 +145,6 @@ export default class LogoManager {
                     child.material = this.materials.button.clone();
                     event = function () {
                         window.logoman.changeDisplayColor('off');
-                        this.displayInfo(child.name, "Botón de navegación");
                     }.bind(this);
                     this.pointerman.addEvent(child, event);
                     break;
@@ -153,7 +152,6 @@ export default class LogoManager {
                     child.material = this.materials.button.clone();
                     event = function () {
                         window.logoman.changeDisplayColor('white');
-                        this.displayInfo(child.name, "Botón de navegación");
                     }.bind(this);
                     this.pointerman.addEvent(child, event);
                     break;
@@ -161,7 +159,6 @@ export default class LogoManager {
                     child.material = this.materials.button.clone();
                     event = function () {
                         window.logoman.changeDisplayColor('amber');
-                        this.displayInfo(child.name, "Botón de navegación");
                     }.bind(this);
                     this.pointerman.addEvent(child, event);
                     break;
@@ -169,14 +166,13 @@ export default class LogoManager {
                     child.material = this.materials.button.clone();
                     event = function () {
                         window.logoman.changeDisplayColor('red');
-                        this.displayInfo(child.name, "Botón de navegación");
                     }.bind(this);
                     this.pointerman.addEvent(child, event);
                     break;
                 case "Button-Ok":
                     child.material = this.materials.okbutton;
                     event = function () {
-                        this.displayInfo(child.name, "Botón OK descripción");
+                        //                        
                     }.bind(this);
                     this.pointerman.addEvent(child, event);
                     this.labelman.create(child, "Botones", "Botokobmovnboi vni'ran vbionaf");
@@ -184,7 +180,7 @@ export default class LogoManager {
                 case "Button-Esc":
                     child.material = this.materials.button.clone();
                     event = function () {
-                        this.displayInfo(child.name, "Botón ESC descripción");
+                        //
                     }.bind(this);
                     this.pointerman.addEvent(child, event);
                     // this.labelman.create(child, "Botones", "Botokobmovnboi vni'ran vbionaf");
