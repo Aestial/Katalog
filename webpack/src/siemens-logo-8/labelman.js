@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
+import {default as sh} from './stringhelper';
 
 import { labelman  as params } from './params';
 
@@ -42,16 +43,15 @@ export default class LabelManager {
     }
     createAll() {
         const annotDivs = document.getElementsByClassName('label');
-        console.log(annotDivs);
         const arr = Array.from(annotDivs);
-        let mult = 0; 
+        let index = 1; 
         arr.forEach((a) => {
-            console.log(a);
             const label = new CSS2DObject(a);
-            // TODO: Get Position from Model
-            label.position.set(2*mult,2,2);
+            console.log(annotations[index]);
+            const position = sh.toVector3(annotations[index].position);
+            label.position.copy(position);
             this.scene.add(label);
-            mult++;
+            index++;
         });
 
     }
