@@ -86,3 +86,15 @@ export const renderman = {
     },    
     exposure: 0.65,
 };
+export const slidesman = {
+    positions: [
+        {x:-12, y:12, z:12},
+        {x:0, y:22, z:0},
+        {x:0, y:4, z:20},
+    ],
+    target: {
+        x: 0,
+        y: 3,
+        z: 0,
+    },
+};
