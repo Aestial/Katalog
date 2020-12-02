@@ -1,3 +1,4 @@
+from django.core.validators import int_list_validator
 from django.db import models
 
 # Create your models here.
@@ -25,7 +26,7 @@ class Annotation(models.Model):
     index = models.PositiveSmallIntegerField()
     summary = models.CharField(max_length=280, blank=True)
     description = models.TextField(blank=True)
-    camera = models.JSONField()
+    camPosition = models.CharField(validators=[int_list_validator(allow_negative=True)], max_length=50, default='0,0,0')
 
     class Meta(object):
         ordering = ['index']
