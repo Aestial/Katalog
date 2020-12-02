@@ -35,11 +35,8 @@ function init() {
     new ControlManager(renderman.camera, labelman.dom);
     // Stats
     statsman = new StatsManager(container);
-
-    new SlidesManager(renderman.camera);
-
-    // Initialize actions
-    window.logoman = logoman;
+    // Slides
+    window.slides = new SlidesManager(renderman.camera);
     render();
 }
 
