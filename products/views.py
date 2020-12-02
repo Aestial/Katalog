@@ -13,12 +13,17 @@ def detail(request, product_slug):
     interactive = Interactive.objects.filter(product__id = product.id).first()
     assets = {asset.name:asset.file.url for asset in interactive.assets.all()}
     annotations = interactive.annotations.all()
+    annots_dict = {a.index:{
+        "camPosition": a.camPosition, 
+        "title": a.title
+    } for a in annotations}
     return render(request, 'products/detail.html', {
         'section':'products',
         'product':product,
         'interactive':interactive,
         'assets':assets,
-        'annotations':annotations
+        'annotations':annotations,
+        'annots_dict':annots_dict,
     })
 
 def dev(request):
