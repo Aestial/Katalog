@@ -26,32 +26,21 @@ export default class LabelManager {
         this.dom.style.top = '0px';
         this.container.appendChild(this.dom);
     }
-    create(mesh, name, content) {
-        const labelDiv = document.createElement('div');
-        labelDiv.className = 'label';
-        // labelDiv.textContent = name;
-        labelDiv.textContent = ++this.index;
-        const onInteract = function (evt) {
-            this.displayInfo(name, content);
-            evt.preventDefault();
-        }.bind(this);
-        labelDiv.onpointerdown = onInteract;
-        const label = new CSS2DObject(labelDiv);
-        label.position.copy(mesh.position);
-        mesh.add(label);
-        this.elements.push({ label, labelDiv, onInteract });
-    }
     createAll() {
-        const annotDivs = document.getElementsByClassName('label');
-        const arr = Array.from(annotDivs);
-        let index = 1; 
-        arr.forEach((a) => {
-            const label = new CSS2DObject(a);
-            console.log(annotations[index]);
+        const divs = Array.from(document.getElementsByClassName('label'));
+        divs.forEach((div) => {            
+            const index = parseInt(div.textContent);
+            const ondown = (evt) => {
+                console.log(index);
+                window.slides.goto(index);
+                evt.preventDefault();
+            };
+            div.onpointerdown = ondown;
             const position = sh.toVector3(annotations[index].position);
-            label.position.copy(position);
-            this.scene.add(label);
-            index++;
+            const label = new CSS2DObject(div);
+            label.position.copy(position);            
+            this.scene.add(label);            
+            this.elements.push({ label, div, ondown });            
         });
 
     }
@@ -67,13 +56,13 @@ export default class LabelManager {
     }
     update() {
         this.elements.forEach((elem) => {
-            const { label, labelDiv, onInteract} = elem;
+            const { label, div, ondown } = elem;
             const meshDistance = this.camera.position.distanceTo(this.origin);
             const labelDistance = this.camera.position.distanceTo(label.position);
-            const isBehindObject = labelDistance > meshDistance;
-            labelDiv.style.opacity = isBehindObject ? params.opacity.hidden : params.opacity.visible;
-            labelDiv.style.cursor = isBehindObject ? 'default' : 'pointer';
-            labelDiv.onpointerdown = isBehindObject ? null : onInteract;
+            const isOccluded = labelDistance > meshDistance;
+            div.style.opacity = isOccluded ? params.opacity.hidden : params.opacity.visible;
+            div.style.cursor = isOccluded ? 'default' : 'pointer';
+            div.onpointerdown = isOccluded ? null : ondown;
         });
         this.renderer.render(this.scene, this.camera);
     }

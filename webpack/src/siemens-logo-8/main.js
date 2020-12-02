@@ -22,6 +22,8 @@ function init() {
     pointerman = new PointerManager(renderman.camera);
     // Scene Manager
     sceneman = new SceneManager(renderman.renderer);
+    // Slides
+    window.slides = new SlidesManager(renderman.camera);
     // Label Manager
     labelman = new LabelManager(container, renderman.camera, sceneman.scene);
     // LOGO Manager
@@ -35,11 +37,7 @@ function init() {
     new ControlManager(renderman.camera, labelman.dom);
     // Stats
     statsman = new StatsManager(container);
-
-    new SlidesManager(renderman.camera);
-
-    // Initialize actions
-    window.logoman = logoman;
+    // Start    
     render();
 }
 
