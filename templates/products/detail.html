@@ -23,17 +23,27 @@
         <p class="">{{ interactive.title }}</p>
       </div>
     </div>
+    <!-- ANNOTATIONS -->
+    <div id="annotations" class="">
+      {% for annot in annotations %}
+      <div class="label">
+        {{ annot.index }}
+      </div>
+      {% endfor %}
+    </div>
     <!-- INDEX: Slides carousel -->
     <div class="container-fluid footer d-flex justify-content-center">
       <div class="text-light col-10 col-md-8 col-lg-6">
         <div id="slidesCarousel" class="carousel slide bg-dark-transparent bg-backdrop-blur border-round-light-25" data-ride="carousel">
           <div id="c-index" class="carousel-inner text-center">
             <div class="carousel-item align-middle active">
-              LOGO!
+              Bienvenido a LOGO!
             </div>
+            {% for annot in annotations %}
             <div class="carousel-item align-middle">
-              Display
+              {{ annot.title }}
             </div>
+            {% endfor %}
           </div>
           <a class="carousel-control-prev" href="#slidesCarousel" role="button" data-slide="prev" id="c-prev" onclick="document.getElementById('c-prev').focus();" >
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -58,7 +68,12 @@
             </button>
           </div>
           <div id="m-index" class="modal-body">
-            INDEX Content
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item bg-transparent">Bienvenido a LOGO!</li>
+              {% for a in annotations %}
+              <li class="list-group-item bg-transparent">{{ a.title }}</li>
+              {% endfor %}
+            </ul>            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-light" data-dismiss="modal">Cerrar</button>
@@ -95,6 +110,14 @@
 <script>
   // RETRIEVE ASSETS
   const assets = {{ assets|safe }};
+  const annotations = {{ annots_dict|safe }};
+  console.log(annotations);
 </script>
+{% if dev %}
+{% with 'webpack/bundle.js' as interactive_static %}
+<script src="{% static interactive_static %}"></script>
+{% endwith %}
+{% else %}
 <script src="{{ interactive.bundle.url|safe }}"></script>
+{% endif %}
 {% endblock %}
