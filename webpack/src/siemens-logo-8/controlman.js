@@ -4,7 +4,7 @@ import { controlman  as params } from './params';
 
 export default class ControlManager {
     constructor(camera, domElement){
-        // Orbit controls
+        this.camera = camera;
         this.controls = new OrbitControls(camera, domElement);
         this.controls.target.set(params.target.x, params.target.y, params.target.z);
         this.controls.maxDistance = params.maxDistance;
@@ -19,6 +19,15 @@ export default class ControlManager {
             // RIGHT: 39, // right arrow
             // BOTTOM: 40 // down arrow
         };
+        this.controls.update();
+    }
+    setPosition(position) {        
+        this.camera.position.copy(position);
+        this.controls.update();
+        console.log(this.camera.position);
+    }
+    setTarget(target) {
+        this.controls.target.copy(target);
         this.controls.update();
     }
 }
