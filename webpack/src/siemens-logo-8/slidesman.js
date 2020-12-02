@@ -15,10 +15,8 @@ export default class SlidesManager {
         this.carousel.on('slide.bs.carousel', (e) => {
             const to = e.to + this.offset;
             // console.log(to);
-            // const arr = annotations[to].camPosition.split(',');
             const position = sh.toVector3(annotations[to].camPosition);
             const target = sh.toVector3(annotations[to].position);
-            // this.camera.position.set(arr[0], arr[1], arr[2]);
             this.camera.position.copy(position);
             this.camera.lookAt(target);
             // TODO: Maybe this breaks in somepoint
