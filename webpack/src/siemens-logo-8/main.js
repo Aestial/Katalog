@@ -9,7 +9,7 @@ import LabelManager from './labelman';
 import SlidesManager from './slidesman';
 
 let renderman, sceneman, effectman;
-let logoman, pointerman, labelman;
+let controlman, logoman, pointerman, labelman;
 let statsman;
 
 init();
@@ -21,9 +21,7 @@ function init() {
     // Pointer Manager
     pointerman = new PointerManager(renderman.camera);
     // Scene Manager
-    sceneman = new SceneManager(renderman.renderer);
-    // Slides
-    window.slides = new SlidesManager(renderman.camera);
+    sceneman = new SceneManager(renderman.renderer);    
     // Label Manager
     labelman = new LabelManager(container, renderman.camera, sceneman.scene);
     // LOGO Manager
@@ -34,7 +32,9 @@ function init() {
     // Effect Manager
     effectman = new EffectManager(renderman.camera, renderman.renderer, sceneman.scene);
     // Control Manager
-    new ControlManager(renderman.camera, labelman.dom);
+    controlman = new ControlManager(renderman.camera, labelman.dom);
+    // Slides
+    window.slides = new SlidesManager(controlman);
     // Stats
     statsman = new StatsManager(container);
     // Start    
