@@ -17,7 +17,21 @@ class Interactive(models.Model):
     data = models.JSONField(blank=True, null=True)
 
     def __str__(self):
-        return self.title
+        return self.product.name + ' - ' + self.title
+
+class Annotation(models.Model):
+    interactive = models.ForeignKey(Interactive, related_name='annotations', on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    index = models.PositiveSmallIntegerField()
+    summary = models.CharField(max_length=280, blank=True)
+    description = models.TextField(blank=True)
+    camera = models.JSONField()
+
+    class Meta(object):
+        ordering = ['index']
+
+    def __str__(self):
+        return self.interactive.title + ' - ' + self.title
 
 class Asset(models.Model):
     interactive = models.ForeignKey(Interactive, related_name='assets', on_delete=models.CASCADE, null=True)
@@ -29,4 +43,4 @@ class Asset(models.Model):
         ordering = ['name']
 
     def __str__(self):
-        return self.interactive.title + '-' + self.name
+        return self.interactive.title + ' - ' + self.name
