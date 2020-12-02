@@ -17,7 +17,7 @@ class AnnotationInline(admin.StackedInline):
 
 @admin.register(Interactive)
 class InteractiveAdmin(admin.ModelAdmin):
-    inlines = [AssetInline, AnnotationInline]
+    inlines = [AnnotationInline, AssetInline]
     ordering = ['title']
 
 admin.site.register(Product)

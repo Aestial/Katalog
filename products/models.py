@@ -1,5 +1,5 @@
-from django.core.validators import int_list_validator
 from django.db import models
+from . import validators
 
 # Create your models here.
 class Product(models.Model):
@@ -20,13 +20,27 @@ class Interactive(models.Model):
     def __str__(self):
         return self.product.name + ' - ' + self.title
 
+
+class CommaSeparatedFloatField(models.CharField):
+    default_validators = [validators.validate_comma_separated_float_list]
+    description = "Comma-separated floats"
+    def formfield(self, **kwargs):
+        defaults = {
+            'error_messages': {
+                'invalid': 'Enter only floats separated by commas.',
+            }
+        }
+        defaults.update(kwargs)
+        return super(CommaSeparatedFloatField, self).formfield(**defaults)
+
 class Annotation(models.Model):
     interactive = models.ForeignKey(Interactive, related_name='annotations', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     index = models.PositiveSmallIntegerField()
     summary = models.CharField(max_length=280, blank=True)
     description = models.TextField(blank=True)
-    camPosition = models.CharField(validators=[int_list_validator(allow_negative=True)], max_length=50, default='0,0,0')
+    position = CommaSeparatedFloatField(max_length=50, default='0,0,0')
+    camPosition = CommaSeparatedFloatField(max_length=50, default='5,5,5')
 
     class Meta(object):
         ordering = ['index']
