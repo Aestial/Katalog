@@ -29,6 +29,3 @@ def detail(request, product_slug, is_dev=False):
 
 def dev(request):
     return detail(request, "siemens-logo-8", True)
-
-# def detail_or_dev(request, product_slug, is_dev=False):
-    
