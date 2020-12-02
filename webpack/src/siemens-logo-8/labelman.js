@@ -26,6 +26,7 @@ export default class LabelManager {
         this.dom.style.top = '0px';
         this.container.appendChild(this.dom);
     }
+    // TODO: DELETE THIS
     create(mesh, name, content) {
         const labelDiv = document.createElement('div');
         labelDiv.className = 'label';
@@ -42,15 +43,15 @@ export default class LabelManager {
         this.elements.push({ label, labelDiv, onInteract });
     }
     createAll() {
-        const annotDivs = document.getElementsByClassName('label');
-        const arr = Array.from(annotDivs);
+        const divs = Array.from(document.getElementsByClassName('label'));
         let index = 1; 
-        arr.forEach((a) => {
-            const label = new CSS2DObject(a);
+        divs.forEach((div) => {
+            const label = new CSS2DObject(div);
             console.log(annotations[index]);
             const position = sh.toVector3(annotations[index].position);
-            label.position.copy(position);
-            this.scene.add(label);
+            label.position.copy(position);            
+            this.elements.push({ label, div });
+            this.scene.add(label);            
             index++;
         });
 
@@ -67,13 +68,13 @@ export default class LabelManager {
     }
     update() {
         this.elements.forEach((elem) => {
-            const { label, labelDiv, onInteract} = elem;
+            const { label, div } = elem;
             const meshDistance = this.camera.position.distanceTo(this.origin);
             const labelDistance = this.camera.position.distanceTo(label.position);
             const isBehindObject = labelDistance > meshDistance;
-            labelDiv.style.opacity = isBehindObject ? params.opacity.hidden : params.opacity.visible;
-            labelDiv.style.cursor = isBehindObject ? 'default' : 'pointer';
-            labelDiv.onpointerdown = isBehindObject ? null : onInteract;
+            div.style.opacity = isBehindObject ? params.opacity.hidden : params.opacity.visible;
+            div.style.cursor = isBehindObject ? 'default' : 'pointer';
+            // div.onpointerdown = isBehindObject ? null : onInteract;
         });
         this.renderer.render(this.scene, this.camera);
     }
