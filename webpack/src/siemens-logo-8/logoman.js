@@ -144,28 +144,28 @@ export default class LogoManager {
                 case 'Button-L':
                     child.material = this.materials.button.clone();
                     event = function () {
-                        window.logoman.changeDisplayColor('off');
+                        this.changeDisplayColor('off');
                     }.bind(this);
                     this.pointerman.addEvent(child, event);
                     break;
                 case 'Button-U':
                     child.material = this.materials.button.clone();
                     event = function () {
-                        window.logoman.changeDisplayColor('white');
+                        this.changeDisplayColor('white');
                     }.bind(this);
                     this.pointerman.addEvent(child, event);
                     break;
                 case 'Button-R':
                     child.material = this.materials.button.clone();
                     event = function () {
-                        window.logoman.changeDisplayColor('amber');
+                        this.changeDisplayColor('amber');
                     }.bind(this);
                     this.pointerman.addEvent(child, event);
                     break;
                 case 'Button-D':
                     child.material = this.materials.button.clone();
                     event = function () {
-                        window.logoman.changeDisplayColor('red');
+                        this.changeDisplayColor('red');
                     }.bind(this);
                     this.pointerman.addEvent(child, event);
                     break;
