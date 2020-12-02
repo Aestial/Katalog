@@ -113,7 +113,7 @@ export default class LogoManager {
         this.object = object;
     }
     processChild(child) {
-        // console.log(child.name);
+        // console.log(child);
         if (child.isMesh) {
             child.castShadow = true;
             child.receiveShadow = true;
@@ -186,6 +186,5 @@ export default class LogoManager {
                     break;                
             }
         }
-        console.log(child);
     }
 }
