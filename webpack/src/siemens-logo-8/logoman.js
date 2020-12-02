@@ -124,7 +124,7 @@ export default class LogoManager {
                     break;
                 case "Display":
                     child.layers.enable(layers.BLOOM_SCENE);
-                    this.labelman.create(child, "Display", "Display information");
+                    // this.labelman.create(child, "Display", "Display information");
                     child.material = this.displayMaterials.red;
                     this.display = child;  
                     break;
@@ -175,7 +175,7 @@ export default class LogoManager {
                         //                        
                     }.bind(this);
                     this.pointerman.addEvent(child, event);
-                    this.labelman.create(child, "Botones", "Botokobmovnboi vni'ran vbionaf");
+                    // this.labelman.create(child, "Botones", "Botokobmovnboi vni'ran vbionaf");
                     break;
                 case "Button-Esc":
                     child.material = this.materials.button.clone();

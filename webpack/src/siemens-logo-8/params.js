@@ -1,4 +1,4 @@
-// TODO: Make JSON
+// TODO: Make and USE JSON
 
 export const layers = {
     ENTIRE_SCENE: 0,

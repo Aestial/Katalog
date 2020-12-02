@@ -14,6 +14,7 @@ export default class LabelManager {
         this.origin = new THREE.Vector3(params.origin.x, params.origin.y, params.origin.z);
         this.elements = [];
         this.configure();
+        this.createAll();
         // Events
         window.addEventListener('resize', this.onWindowResize.bind(this), false);
         this.onWindowResize();        
@@ -38,6 +39,21 @@ export default class LabelManager {
         label.position.copy(mesh.position);
         mesh.add(label);
         this.elements.push({ label, labelDiv, onInteract });
+    }
+    createAll() {
+        const annotDivs = document.getElementsByClassName('label');
+        console.log(annotDivs);
+        const arr = Array.from(annotDivs);
+        let mult = 0; 
+        arr.forEach((a) => {
+            console.log(a);
+            const label = new CSS2DObject(a);
+            // TODO: Get Position from Model
+            label.position.set(2*mult,2,2);
+            this.scene.add(label);
+            mult++;
+        });
+
     }
     displayInfo(name, content) {
         $('#rightModal').modal('show');
