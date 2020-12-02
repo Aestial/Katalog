@@ -1,22 +1,32 @@
-import * as THREE from 'three';
-import { slidesman  as params } from './params';
+import {default as sh} from './stringhelper';
 
 export default class SlidesManager {
     constructor(camera) {
         this.camera = camera;
-        this.positions = params.positions;
-        $('#slidesCarousel').carousel({
+        this.firstTime = true;
+        this.offset = 0;
+        this.carousel = $('#slidesCarousel');
+        // this.positions = params.positions;
+        this.carousel.carousel({
             interval: false, //4500,
             keyboard: true,
             ride: true,
         });
-        $('#slidesCarousel').on('slide.bs.carousel', (e) => {
-            // do something…
-            // console.log(e.to);
-            const p = this.positions[e.to];
-            const pv = new THREE.Vector3(p.x, p.y, p.z);
-            this.camera.position.copy(pv);
-            this.camera.lookAt(params.target.x, params.target.y, params.target.z);
+        this.carousel.on('slide.bs.carousel', (e) => {
+            const to = e.to + this.offset;
+            // console.log(to);
+            // const arr = annotations[to].camPosition.split(',');
+            const position = sh.toVector3(annotations[to].camPosition);
+            const target = sh.toVector3(annotations[to].position);
+            // this.camera.position.set(arr[0], arr[1], arr[2]);
+            this.camera.position.copy(position);
+            this.camera.lookAt(target);
+            // TODO: Maybe this breaks in somepoint
+            if (this.firstTime){
+                document.getElementById('welcome').remove();
+                this.firstTime = false;
+                this.offset = 1;
+            }           
         });
     }
 }
