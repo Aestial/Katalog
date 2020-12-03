@@ -24,6 +24,7 @@ export default class RenderManager {
         this.camera.position.set(params.cam.pos.x, params.cam.pos.y, params.cam.pos.z);
         this.camera.near = params.cam.near;
         this.camera.far = params.cam.far;
+        this.camera.fov = params.cam.fov / (this.aspectRatio);
         this.container.appendChild(this.dom);
         this.renderer.setPixelRatio(window.devicePixelRatio);
         this.renderer.setSize(this.width, this.height);
@@ -34,10 +35,12 @@ export default class RenderManager {
         this.renderer.toneMappingExposure = params.exposure;
     }
     onWindowResize() {
-        let w = window.innerWidth;
-        let h = window.innerHeight;
-        this.camera.aspect = w / h;
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+        this.aspectRatio = this.width / this.height;
+        this.camera.aspect = this.aspectRatio;
+        this.camera.fov = params.cam.fov / Math.log(params.cam.base + this.aspectRatio);
         this.camera.updateProjectionMatrix();
-        this.renderer.setSize(w, h);
+        this.renderer.setSize(this.width, this.height);
     }
 }

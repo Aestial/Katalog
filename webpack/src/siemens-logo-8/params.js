@@ -83,6 +83,8 @@ export const renderman = {
         },
         near: 6,
         far: 50,
+        fov: 50,
+        base: 1.5,
     },    
     exposure: 0.65,
 };
