@@ -1,3 +1,4 @@
+json = `
 {
     "layers": {
         "ENTIRE_SCENE": 0,
@@ -21,7 +22,7 @@
         },
         "ssao": {
             "kernelRadius": 2,
-            "kernelSize": 32,
+            "kernelSize": 16,
             "minDistance": 0,
             "maxDistance": 0.1
         }
@@ -39,8 +40,8 @@
     },
     "lightman": {
         "dir": {
-            "color": "0x7f7f7f",
-            "intensity": 0.75,
+            "color": "#efdf7f",
+            "intensity": 0.95,
             "pos": {
                 "x": -10,
                 "y": 12,
@@ -61,9 +62,9 @@
             "light": true
         },
         "hemi": {
-            "sky": "0x050505",
-            "ground": "0x9f9f9f",
-            "intensity": 1,
+            "sky": "#afc4cf",
+            "ground": "#f7f7f7",
+            "intensity": 2.5,
             "pos": {
                 "x": 0,
                 "y": 100,
@@ -85,7 +86,10 @@
             "fov": 50,
             "base": 1.4
         },    
-        "exposure": 0.65
+        "exposure": 0.18
+    },
+    "sceneman": {
+        "background": "#040506"
     },
     "slidesman": {
         "target": {
@@ -95,3 +99,4 @@
         }
     }
 }
+`
