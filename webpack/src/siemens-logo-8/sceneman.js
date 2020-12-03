@@ -3,9 +3,10 @@ import LightingManager from './lightman';
 
 export default class SceneManager {
     constructor(renderer){
+        this.data = data.sceneman;
         this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color(0x040506);
-        this.scene.fog = new THREE.Fog(0x606060, 200, 10000);
+        this.scene.background = new THREE.Color(this.data.background);
+        // this.scene.fog = new THREE.Fog(0x606060, 200, 10000);
         this.lighting = new LightingManager(this.scene, renderer);
         // this.addHelpers();
     }

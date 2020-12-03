@@ -1,13 +1,11 @@
 import * as THREE from 'three';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
-// import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
-import { layers } from './params';
-
 export default class LogoManager {
     constructor(pointerman, callback, labelman){
         this.pointerman = pointerman;
         this.callback = callback;
         this.labelman = labelman;
+        this.layers = data.layers;
         this.loadTextures();
         this.createMaterials();
         this.createModel();
@@ -15,9 +13,9 @@ export default class LogoManager {
     changeDisplayColor(color) {
         this.display.material = this.displayMaterials[color];
         if (color == 'off') {
-            this.display.layers.disable(layers.BLOOM_SCENE);
+            this.display.layers.disable(this.layers.BLOOM_SCENE);
         } else {
-            this.display.layers.enable(layers.BLOOM_SCENE);
+            this.display.layers.enable(this.layers.BLOOM_SCENE);
         }
     }
     createModel() {
@@ -123,7 +121,7 @@ export default class LogoManager {
                     child.material = this.materials.body;
                     break;
                 case "Display":
-                    child.layers.enable(layers.BLOOM_SCENE);
+                    child.layers.enable(this.layers.BLOOM_SCENE);
                     child.material = this.displayMaterials.red;
                     this.display = child;  
                     break;
@@ -137,7 +135,7 @@ export default class LogoManager {
                     child.material = this.materials.labelbg;
                     break;
                 case "ScreenCover":
-                    child.layers.enable(layers.BLOOM_SCENE);
+                    child.layers.enable(this.layers.BLOOM_SCENE);
                     child.material = this.materials.screencover;
                     break;
                 case 'Button-L':

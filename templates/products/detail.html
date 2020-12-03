@@ -110,11 +110,20 @@
 {% endblock %}
 
 {% block scripts %}
+{% if dev %}
+{% with 'js/data.json' as json %}
+<script type="text/javascript" src="{% static json %}"></script>
+{% endwith %}
+{% else %}
 <script>
-  // RETRIEVE ASSETS
-  const assets = {{ assets|safe }};
+  const json = `{{ data_json|safe }}`; //JSON
+</script>
+{% endif %}
+<script>
+  // RETRIEVE MoreData
+  const assets = {{ assets|safe }};  
   const annotations = {{ annots_dict|safe }};
-  console.log(annotations);
+  const data = JSON.parse(json);
 </script>
 {% if dev %}
 {% with 'webpack/bundle.js' as interactive_static %}

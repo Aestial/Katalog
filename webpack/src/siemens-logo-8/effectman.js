@@ -5,10 +5,10 @@ import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import { SSAOPass } from 'three/examples/jsm/postprocessing/SSAOPass.js';
 
-import { effectman  as params, layers } from './params';
-
 export default class EffectManager {
     constructor(camera, renderer, scene) {
+        this.data = data.effectman;
+        this.layers = data.layers;
         this.camera = camera;
         this.renderer = renderer;
         this.scene = scene;
@@ -17,14 +17,14 @@ export default class EffectManager {
         this.darkMaterial = new THREE.MeshBasicMaterial( { color: "black" } );
         // Bloom layer
         this.bloomLayer = new THREE.Layers();
-        this.bloomLayer.set(layers.BLOOM_SCENE);
+        this.bloomLayer.set(this.layers.BLOOM_SCENE);
         // Render Pass
         this.renderPass = new RenderPass( this.scene, this.camera );
         // Bloom Pass (Unreal)
         this.bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.outerHeight ), 1.5, 0.4, 0.85);
-        this.bloomPass.threshold = params.bloom.threshold;
-        this.bloomPass.strength = params.bloom.strength;
-        this.bloomPass.radius = params.bloom.radius;
+        this.bloomPass.threshold = this.data.bloom.threshold;
+        this.bloomPass.strength = this.data.bloom.strength;
+        this.bloomPass.radius = this.data.bloom.radius;
         // Bloom Composer
         this.bloomComposer = new EffectComposer(this.renderer);
         this.bloomComposer.renderToScreen = false;
@@ -32,10 +32,10 @@ export default class EffectManager {
         this.bloomComposer.addPass(this.bloomPass);
         // SSAO Pass
         this.ssaoPass = new SSAOPass(this.scene, this.camera, this.renderer.width, this.renderer.height);
-        this.ssaoPass.kernelRadius = params.ssao.kernelRadius;
-        this.ssaoPass.kernelSize = params.ssao.kernelSize;
-        this.ssaoPass.minDistance = params.ssao.minDistance;
-        this.ssaoPass.maxDistance = params.ssao.maxDistance;
+        this.ssaoPass.kernelRadius = this.data.ssao.kernelRadius;
+        this.ssaoPass.kernelSize = this.data.ssao.kernelSize;
+        this.ssaoPass.minDistance = this.data.ssao.minDistance;
+        this.ssaoPass.maxDistance = this.data.ssao.maxDistance;
         // Final Pass
         this.finalPass = new ShaderPass(
             new THREE.ShaderMaterial( {
@@ -78,8 +78,8 @@ export default class EffectManager {
         this.finalComposer.render();
     }
     setSize(width, height) {
-        this.bloomComposer.setSize(width*params.scale, height*params.scale);
-        this.finalComposer.setSize(width*params.scale, height*params.scale);
+        this.bloomComposer.setSize(width*this.data.scale, height*this.data.scale);
+        this.finalComposer.setSize(width*this.data.scale, height*this.data.scale);
     }
     darkenNonBloomed(obj) {
         if ( obj.isMesh && this.bloomLayer.test( obj.layers ) === false ) {

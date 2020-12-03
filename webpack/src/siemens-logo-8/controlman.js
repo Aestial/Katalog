@@ -1,14 +1,14 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { controlman  as params } from './params';
 
 export default class ControlManager {
     constructor(camera, domElement){
+        this.data = data.controlman;
         this.camera = camera;
         this.controls = new OrbitControls(camera, domElement);
-        this.controls.target.set(params.target.x, params.target.y, params.target.z);
-        this.controls.maxDistance = params.maxDistance;
-        this.controls.minDistance = params.minDistance;
+        this.controls.target.set(this.data.target.x, this.data.target.y, this.data.target.z);
+        this.controls.maxDistance = this.data.maxDistance;
+        this.controls.minDistance = this.data.minDistance;
         this.controls.keys = {            
             UP: 87, // W
             LEFT: 65, // A

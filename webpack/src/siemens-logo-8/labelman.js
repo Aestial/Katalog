@@ -1,16 +1,16 @@
 import * as THREE from 'three';
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 import {default as sh} from './stringhelper';
-import { labelman  as params } from './params';
 
 export default class LabelManager {
     constructor(container, camera, scene) {
+        this.data = data.labelman;
         this.container = container;
         this.camera = camera;
         this.scene = scene;
         this.renderer = new CSS2DRenderer();
         this.dom = this.renderer.domElement;
-        this.origin = new THREE.Vector3(params.origin.x, params.origin.y, params.origin.z);
+        this.origin = new THREE.Vector3(this.data.origin.x, this.data.origin.y, this.data.origin.z);
         this.elements = [];
         this.configure();
         this.createAll();
@@ -52,7 +52,7 @@ export default class LabelManager {
             const meshDistance = this.camera.position.distanceTo(this.origin);
             const labelDistance = this.camera.position.distanceTo(label.position);
             const isOccluded = labelDistance > meshDistance;
-            div.style.opacity = isOccluded ? params.opacity.hidden : params.opacity.visible;
+            div.style.opacity = isOccluded ? this.data.opacity.hidden : this.data.opacity.visible;
             div.style.cursor = isOccluded ? 'default' : 'pointer';
             div.onpointerdown = isOccluded ? null : ondown;
         });
