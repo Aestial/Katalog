@@ -1,7 +1,6 @@
 import * as THREE from 'three';
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 import {default as sh} from './stringhelper';
-
 import { labelman  as params } from './params';
 
 export default class LabelManager {
@@ -11,7 +10,6 @@ export default class LabelManager {
         this.scene = scene;
         this.renderer = new CSS2DRenderer();
         this.dom = this.renderer.domElement;
-        this.index = 0;
         this.origin = new THREE.Vector3(params.origin.x, params.origin.y, params.origin.z);
         this.elements = [];
         this.configure();
@@ -42,12 +40,6 @@ export default class LabelManager {
             this.scene.add(label);            
             this.elements.push({ label, div, ondown });            
         });
-
-    }
-    displayInfo(name, content) {
-        $('#rightModal').modal('show');
-        $('#rightModalLabel').text(name);
-        $('#rightModal .modal-body').text(content);
     }
     onWindowResize() {
         let w = window.innerWidth;

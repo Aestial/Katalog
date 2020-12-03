@@ -16,7 +16,7 @@ def detail(request, product_slug, is_dev=False):
     annots_dict = {a.index:{        
         "title": a.title,
         "position": a.position,
-        "camPosition": a.camPosition
+        "cam_position": a.cam_position
     } for a in annotations}
     return render(request, 'products/detail.html', {
         'section':'products',

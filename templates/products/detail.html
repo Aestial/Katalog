@@ -26,9 +26,11 @@
     <!-- ANNOTATION LABELS -->
     <div id="annotations" class="">
       {% for a in annotations %}
+      {% if a.has_label %}
       <div class="label" >
         {{ a.index }}
       </div>
+      {% endif %}
       {% endfor %}
     </div>
     <!-- INDEX: Slides carousel -->
@@ -36,11 +38,8 @@
       <div class="text-light col-10 col-md-8 col-lg-6">
         <div id="slidesCarousel" class="carousel slide bg-dark-transparent bg-backdrop-blur border-round-light-25" data-ride="carousel">
           <div id="c-index" class="carousel-inner text-center">
-            <div id="welcome" class="carousel-item align-middle active">
-              Bienvenido a LOGO!
-            </div>
-            {% for a in annotations %}
-            <div class="carousel-item align-middle">
+            {% for a in annotations %}            
+            <div class="carousel-item align-middle {% if forloop.first %} active {% endif %}">
               {{ a.title }}
             </div>
             {% endfor %}
@@ -68,11 +67,10 @@
             </button>
           </div>
           <div id="m-index" class="modal-body">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item bg-transparent">Bienvenido a LOGO!</li>
+            <ul class="list-group list-group-flush">              
               {% for a in annotations %}
               <li class="list-group-item bg-transparent" data-dismiss="modal" onpointerdown="window.slides.goto({{ a.index }});">
-                {{ a.index }}. {{ a.title }}
+                {% if a.has_label %} {{ a.index }}. {% endif %} {{ a.title }}
               </li>
               {% endfor %}
             </ul>            

@@ -24,6 +24,7 @@ class Interactive(models.Model):
 class CommaSeparatedFloatField(models.CharField):
     default_validators = [validators.validate_comma_separated_float_list]
     description = "Comma-separated floats"
+
     def formfield(self, **kwargs):
         defaults = {
             'error_messages': {
@@ -39,8 +40,9 @@ class Annotation(models.Model):
     index = models.PositiveSmallIntegerField()
     summary = models.CharField(max_length=280, blank=True)
     description = models.TextField(blank=True)
+    has_label = models.BooleanField(default=True)
     position = CommaSeparatedFloatField(max_length=50, default='0,0,0')
-    camPosition = CommaSeparatedFloatField(max_length=50, default='5,5,5')
+    cam_position = CommaSeparatedFloatField(max_length=50, default='5,5,5')
 
     class Meta(object):
         ordering = ['index']
@@ -53,7 +55,7 @@ class Asset(models.Model):
     name = models.CharField(max_length=220)
     file = models.FileField(upload_to='assets/', blank=True, null=True)
     meta = models.JSONField(blank=True, null=True)
-    
+
     class Meta(object):
         ordering = ['name']
 
