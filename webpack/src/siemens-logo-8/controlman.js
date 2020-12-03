@@ -24,7 +24,7 @@ export default class ControlManager {
     setPosition(position) {        
         this.camera.position.copy(position);
         this.controls.update();
-        console.log(this.camera.position);
+        // console.log(this.camera.position);
     }
     setTarget(target) {
         this.controls.target.copy(target);

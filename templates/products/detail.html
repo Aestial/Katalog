@@ -18,9 +18,9 @@
       <button type="button" class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#leftModal">
         Índice
       </button>
-       <!-- Name -->
-       <div class="d-block d-lg-none container-fluid text-right text-light">
-        <p class="">{{ interactive.title }}</p>
+      <div class="text-right text-light" >
+        <div class="far fa-question-circle fa-2x text-light opacity-4"  onpointerdown="window.slides.showHelp()">
+        </div>
       </div>
     </div>
     <!-- ANNOTATION LABELS -->
@@ -35,7 +35,10 @@
     </div>
     <!-- INDEX: Slides carousel -->
     <div class="container-fluid footer d-flex justify-content-center">
-      <div class="text-light col-10 col-md-8 col-lg-6">
+      <div class="text-light text-center col-10 col-md-8 col-lg-6">
+        <div class="container d-flex justify-content-center">
+          <i id="showMore" class="col-3 d-none m-2 m-md-3 p-md-2 fas fa-plus-circle fa-2x opacity-5" onpointerdown="window.slides.showModal()"></i>
+        </div>        
         <div id="slidesCarousel" class="carousel slide bg-dark-transparent bg-backdrop-blur border-round-light-25" data-ride="carousel">
           <div id="c-index" class="carousel-inner text-center">
             {% for a in annotations %}            
@@ -93,10 +96,10 @@
             </button>
           </div>
           <div class="modal-body p-5">
+            Presiona el botón <i class="fas fa-plus-circle text-light"></i> para mayor información.
           </div>            
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-light" data-dismiss="modal">Cerrar</button>
-            <!-- <button type="button" class="btn btn-outline-primary">Vuelve a comenzar</button> -->
+            <button type="button" class="btn btn-outline-light" data-dismiss="modal">OK</button>
           </div>
         </div>
       </div>

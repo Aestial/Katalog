@@ -15,6 +15,8 @@ def detail(request, product_slug, is_dev=False):
     annotations = interactive.annotations.all()
     annots_dict = {a.index:{        
         "title": a.title,
+        "summary": a.summary,
+        "description": a.description,
         "position": a.position,
         "cam_position": a.cam_position
     } for a in annotations}
