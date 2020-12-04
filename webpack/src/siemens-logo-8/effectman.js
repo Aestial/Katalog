@@ -4,6 +4,7 @@ import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import { SSAOPass } from 'three/examples/jsm/postprocessing/SSAOPass.js';
+import { GUI } from 'three/examples/jsm/libs/dat.gui.module.js';
 
 export default class EffectManager {
     constructor(camera, renderer, scene) {
@@ -12,6 +13,16 @@ export default class EffectManager {
         this.camera = camera;
         this.renderer = renderer;
         this.scene = scene;
+        // GUI
+        this.gui = new GUI({name: 'Effects control', closed: true});
+        this.gui.width = 200;
+        const bloomfolder = this.gui.addFolder('Bloom');
+        bloomfolder.add(this.data.bloom, 'enabled');
+        bloomfolder.open();
+        const ssaofolder = this.gui.addFolder('SSAO');
+        ssaofolder.add(this.data.ssao, 'enabled');
+        ssaofolder.open();        
+        this.gui.add(this.data, 'scale').min(0.5).max(2.5);
         // Materials
         this.materials = {};
         this.darkMaterial = new THREE.MeshBasicMaterial( { color: "black" } );
@@ -72,6 +83,10 @@ export default class EffectManager {
          this.onWindowResize();
     }
     render() {
+        // Enable/Disable passes
+        this.bloomPass.enabled = this.data.bloom.enabled;
+        this.ssaoPass.enabled = this.data.ssao.enabled;
+        // Render selective Bloom
         this.scene.traverse(this.darkenNonBloomed.bind(this));
         this.bloomComposer.render();
         this.scene.traverse(this.restoreMaterial.bind(this));
@@ -97,7 +112,7 @@ export default class EffectManager {
         let w = window.innerWidth;
         let h = window.innerHeight;
         // Composers
-        this.setSize(w, h);
+        this.setSize(w*this.data.scale, h*this.data.scale);
         // render();
     }
 }

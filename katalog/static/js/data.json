@@ -16,11 +16,13 @@ json = `
     "effectman": {
         "scale": 1.25,
         "bloom": {
+            "enabled": true,
             "radius": 0.5,
             "strength": 1.25,
             "threshold": 0
         },
         "ssao": {
+            "enabled": true,
             "kernelRadius": 2,
             "kernelSize": 16,
             "minDistance": 0,
