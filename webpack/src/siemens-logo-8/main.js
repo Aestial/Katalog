@@ -42,9 +42,10 @@ function init() {
 }
 
 function animate() {
-    setTimeout(() => {
-        requestAnimationFrame(animate);
-    }, 1000 / 30);
+    requestAnimationFrame(animate);
+    // setTimeout(() => {
+        
+    // }, 1000 / 30);
     render();
 }
 function render() {
