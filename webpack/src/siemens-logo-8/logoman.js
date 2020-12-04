@@ -37,7 +37,7 @@ export default class LogoManager {
                 metalness: 0.4,
                 emissiveMap: this.textures.displaymap,
                 emissive: 0xafafaf,
-                emissiveIntensity: 0.05,
+                emissiveIntensity: 0.005,
             }),
             amber: new THREE.MeshStandardMaterial({
                 color: 0xff3f00,
@@ -46,7 +46,7 @@ export default class LogoManager {
                 metalness: 0.4,
                 emissiveMap: this.textures.displaymap,
                 emissive: 0xff3f00,
-                emissiveIntensity: 0.05,
+                emissiveIntensity: 0.03,
             }),
             red: new THREE.MeshStandardMaterial({
                 color: 0xde0000,
@@ -55,7 +55,7 @@ export default class LogoManager {
                 metalness: 0.4,
                 emissiveMap: this.textures.displaymap,
                 emissive: 0xde0a00,
-                emissiveIntensity: 0.025,
+                emissiveIntensity: 0.005,
             }),               
         };
         this.materials = {
@@ -121,8 +121,7 @@ export default class LogoManager {
                     child.material = this.materials.body;
                     break;
                 case "Display":
-                    child.layers.enable(this.layers.BLOOM_SCENE);
-                    child.material = this.displayMaterials.red;
+                    child.material = this.displayMaterials.off;
                     this.display = child;  
                     break;
                 case "Screen":
