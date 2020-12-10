@@ -9,6 +9,9 @@ export default class ControlManager {
         this.controls.target.set(this.data.target.x, this.data.target.y, this.data.target.z);
         this.controls.maxDistance = this.data.maxDistance;
         this.controls.minDistance = this.data.minDistance;
+        this.controls.autoRotate = true;
+        this.controls.enableDamping = true;
+        // this.controls.
         this.controls.keys = {            
             UP: 87, // W
             LEFT: 65, // A
@@ -19,15 +22,26 @@ export default class ControlManager {
             // RIGHT: 39, // right arrow
             // BOTTOM: 40 // down arrow
         };
-        this.controls.update();
+        this.update();
     }
     setPosition(position) {        
         this.camera.position.copy(position);
-        this.controls.update();
-        // console.log(this.camera.position);
+        this.update();
     }
-    setTarget(target) {
+    setTarget(target, autoRotate=false) {
         this.controls.target.copy(target);
+        // this.update();
+        // this.controls.reset();
+        // const azimuthAngle = this.controls.getAzimuthalAngle();
+        // console.log(azimuthAngle);
+        // this.controls.minAzimuthAngle = azimuthAngle;
+        // this.controls.maxAzimuthAngle = azimuthAngle + Math.PI/4;
+        this.controls.autoRotate = autoRotate;
+        this.controls.enableDamping = autoRotate;
+        // this.controls.target.copy(target);
+        this.update();
+    }
+    update() {
         this.controls.update();
     }
 }

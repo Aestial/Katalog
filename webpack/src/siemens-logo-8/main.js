@@ -53,5 +53,6 @@ function render() {
     labelman.update();
     renderman.clear();
     effectman.render();
+    controlman.update();
     statsman.update();
 }
