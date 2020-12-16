@@ -22,7 +22,7 @@ footer {
 	-webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.3);
 }
 /* OVERLAY TITLE */
-.title {
+.title-over-header {
     position: absolute;
     top: 50px;
     z-index: -1;
@@ -49,6 +49,11 @@ footer {
     background: rgba( 0, 0, 0, .5);
     color: #FFF;
     font-family: sans-serif;
+    cursor: pointer;     /* change the cursor to a hand when over us */
+    user-select: none;   /* don't let the text get selected */
+}
+
+.list-group-item {
     cursor: pointer;     /* change the cursor to a hand when over us */
     user-select: none;   /* don't let the text get selected */
 }
