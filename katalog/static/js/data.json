@@ -14,7 +14,7 @@ json = `
         "maxDistance": 21
     },
     "effectman": {
-        "scale": 1.25,
+        "scale": 0.9,
         "bloom": {
             "enabled": true,
             "radius": 0.5,
