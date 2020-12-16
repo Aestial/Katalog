@@ -43,7 +43,7 @@ export default class SlidesManager {
     updateControls(to) {
         const target = sh.toVector3(annotations[to].position);
         const position = sh.toVector3(annotations[to].cam_position);               
-        this.controlman.setTarget(target);
+        this.controlman.setTarget(target, to==0);
         this.controlman.setPosition(position);
     }
     updateInfo(to) {

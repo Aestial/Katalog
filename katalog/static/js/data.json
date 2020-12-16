@@ -16,11 +16,13 @@ json = `
     "effectman": {
         "scale": 1.25,
         "bloom": {
+            "enabled": true,
             "radius": 0.5,
-            "strength": 1.25,
-            "threshold": 0
+            "strength": 0.84,
+            "threshold": 0.18
         },
         "ssao": {
+            "enabled": true,
             "kernelRadius": 2,
             "kernelSize": 16,
             "minDistance": 0,
@@ -41,7 +43,7 @@ json = `
     "lightman": {
         "dir": {
             "color": "#efdf7f",
-            "intensity": 0.95,
+            "intensity": 0.85,
             "pos": {
                 "x": -10,
                 "y": 12,
@@ -63,8 +65,8 @@ json = `
         },
         "hemi": {
             "sky": "#afc4cf",
-            "ground": "#f7f7f7",
-            "intensity": 2.5,
+            "ground": "#f1f2f3",
+            "intensity": 3.2,
             "pos": {
                 "x": 0,
                 "y": 100,
@@ -86,7 +88,7 @@ json = `
             "fov": 50,
             "base": 1.4
         },    
-        "exposure": 0.18
+        "exposure": 0.21
     },
     "sceneman": {
         "background": "#040506"
