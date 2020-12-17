@@ -22,7 +22,8 @@ export default class EffectManager {
         bloomfolder.open();
         const ssaofolder = this.gui.addFolder('SSAO');
         ssaofolder.add(this.data.ssao, 'enabled');
-        ssaofolder.open();       
+        ssaofolder.open();
+        this.gui.close();     
         // Materials
         this.materials = {};
         this.darkMaterial = new THREE.MeshBasicMaterial( { color: "black" } );

@@ -10,7 +10,6 @@ export default class ControlManager {
         this.controls.minDistance = this.data.minDistance;
         this.controls.autoRotate = true;
         this.controls.enableDamping = true;
-        // this.controls.
         this.controls.keys = {            
             UP: 87, // W
             LEFT: 65, // A
@@ -23,23 +22,21 @@ export default class ControlManager {
         };
         this.update();
     }
+    setLimits(min, max) {
+        this.controls.minAzimuthAngle = min/180 * Math.PI;
+        this.controls.maxAzimuthAngle = max/180 * Math.PI;
+        this.update();
+    }
     setPosition(position) {        
         this.camera.position.copy(position);
         this.update();
     }
     setTarget(target, autoRotate=false) {
         this.controls.target.copy(target);
-        // this.update();
-        // this.controls.reset();
-        // const azimuthAngle = this.controls.getAzimuthalAngle();
-        // console.log(azimuthAngle);
-        // this.controls.minAzimuthAngle = azimuthAngle;
-        // this.controls.maxAzimuthAngle = azimuthAngle + Math.PI/4;
         this.controls.autoRotate = autoRotate;
         this.controls.enableDamping = autoRotate;
-        // this.controls.target.copy(target);
-        this.update();
-    }
+        this.update();        
+    }    
     update() {
         this.controls.update();
     }
