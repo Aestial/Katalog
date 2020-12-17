@@ -4,7 +4,7 @@ import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import { SSAOPass } from 'three/examples/jsm/postprocessing/SSAOPass.js';
-import { GUI } from 'three/examples/jsm/libs/dat.gui.module.js';
+import * as dat from 'dat.gui';
 
 export default class EffectManager {
     constructor(camera, renderer, scene) {
@@ -14,15 +14,16 @@ export default class EffectManager {
         this.renderer = renderer;
         this.scene = scene;
         // GUI
-        this.gui = new GUI({name: 'Effects control', closed: true});
+        this.gui = new dat.GUI();
         this.gui.width = 200;
+        this.gui.add(this.data, 'scale', 0.1, 2.5).onChange(this.setScale.bind(this));
         const bloomfolder = this.gui.addFolder('Bloom');
         bloomfolder.add(this.data.bloom, 'enabled');
         bloomfolder.open();
         const ssaofolder = this.gui.addFolder('SSAO');
         ssaofolder.add(this.data.ssao, 'enabled');
-        ssaofolder.open();        
-        this.gui.add(this.data, 'scale').min(0.5).max(2.5);
+        ssaofolder.open();
+        this.gui.close();     
         // Materials
         this.materials = {};
         this.darkMaterial = new THREE.MeshBasicMaterial( { color: "black" } );
@@ -93,8 +94,11 @@ export default class EffectManager {
         this.finalComposer.render();
     }
     setSize(width, height) {
-        this.bloomComposer.setSize(width*this.data.scale, height*this.data.scale);
-        this.finalComposer.setSize(width*this.data.scale, height*this.data.scale);
+        this.bloomComposer.setSize(width, height);
+        this.finalComposer.setSize(width, height);
+    }
+    setScale(scale) {
+        this.setSize(this.width*scale, this.height*scale);
     }
     darkenNonBloomed(obj) {
         if ( obj.isMesh && this.bloomLayer.test( obj.layers ) === false ) {
@@ -109,10 +113,8 @@ export default class EffectManager {
         }
     }
     onWindowResize() {
-        let w = window.innerWidth;
-        let h = window.innerHeight;
-        // Composers
-        this.setSize(w*this.data.scale, h*this.data.scale);
-        // render();
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+        this.setSize(this.width*this.data.scale, this.height*this.data.scale);
     }
 }
