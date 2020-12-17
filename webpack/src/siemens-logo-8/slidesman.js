@@ -42,9 +42,13 @@ export default class SlidesManager {
     }
     updateControls(to) {
         const target = sh.toVector3(annotations[to].position);
-        const position = sh.toVector3(annotations[to].cam_position);               
-        console.log(to);
-        this.controlman.setLimits(limits[to].min, limits[to].max);        
+        const position = sh.toVector3(annotations[to].cam_position);  
+        const azimuth = sh.toMinMaxAngle(annotations[to].azimuth_limits);
+        const polar = sh.toMinMaxAngle(annotations[to].polar_limits);
+        const distance = sh.toMinMax(annotations[to].distance_limits);
+        this.controlman.setAzimuthLimits(azimuth.min, azimuth.max);        
+        this.controlman.setPolarLimits(polar.min, polar.max);        
+        this.controlman.setDistanceLimits(distance.min, distance.max);
         this.controlman.setTarget(target, to==0);
         this.controlman.setPosition(position);
     }

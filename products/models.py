@@ -43,6 +43,9 @@ class Annotation(models.Model):
     has_label = models.BooleanField(default=True)
     position = CommaSeparatedFloatField(max_length=50, default='0,0,0')
     cam_position = CommaSeparatedFloatField(max_length=50, default='5,5,5')
+    azimuth_limits = CommaSeparatedFloatField(max_length=20, default='-360, 360')
+    polar_limits = CommaSeparatedFloatField(max_length=20, default='0, 180')
+    distance_limits = CommaSeparatedFloatField(max_length=20, default='0, 30')
 
     class Meta(object):
         ordering = ['index']

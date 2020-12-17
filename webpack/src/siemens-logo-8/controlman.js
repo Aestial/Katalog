@@ -22,9 +22,19 @@ export default class ControlManager {
         };
         this.update();
     }
-    setLimits(min, max) {
+    setAzimuthLimits(min, max) {
         this.controls.minAzimuthAngle = min/180 * Math.PI;
         this.controls.maxAzimuthAngle = max/180 * Math.PI;
+        this.update();
+    }
+    setPolarLimits(min, max) {
+        this.controls.minPolarAngle = min/180 * Math.PI;
+        this.controls.maxPolarAngle = max/180 * Math.PI;
+        this.update();
+    }
+    setDistanceLimits(min, max) {
+        this.controls.minDistance = min;
+        this.controls.maxDistance = max;
         this.update();
     }
     setPosition(position) {        

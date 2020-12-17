@@ -34,6 +34,9 @@ def dictionary(annotations):
         "summary": a.summary,
         "description": a.description,
         "position": a.position,
-        "cam_position": a.cam_position
+        "cam_position": a.cam_position,
+        "azimuth_limits": a.azimuth_limits,
+        "polar_limits": a.polar_limits,
+        "distance_limits": a.distance_limits,
     } for a in annotations}
     return d

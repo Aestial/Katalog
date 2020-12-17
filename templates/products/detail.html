@@ -124,12 +124,6 @@
   const assets = {{ assets|safe }};  
   const annotations = {{ annots_dict|safe }};
   const data = JSON.parse(json);
-  const limits = [
-    {min:-Infinity, max:Infinity},
-    {min:140, max:220},
-    {min:120, max:210},
-    {min:-20, max:40},
-  ]
 </script>
 {% if dev %}
 {% with 'webpack/bundle.js' as interactive_static %}
