@@ -7,10 +7,11 @@ export default class ControlManager {
         this.controls = new OrbitControls(camera, domElement);
         this.controls.target.set(this.data.target.x, this.data.target.y, this.data.target.z);
         this.controls.maxDistance = this.data.maxDistance;
-        this.controls.minDistance = this.data.minDistance;
+        this.controls.minDistance = this.data.minDistance;        
         this.controls.autoRotate = true;
         this.controls.enableDamping = true;
-        this.controls.keys = {            
+        this.controls.enablePan = false;
+        this.controls.keys = {
             UP: 87, // W
             LEFT: 65, // A
             BOTTOM: 83, // S
