@@ -1,104 +1,33 @@
 json = `
 {
-    "layers": {
-        "ENTIRE_SCENE": 0,
-        "BLOOM_SCENE": 1
-    },
-    "controlman": {
-        "target": {
-            "x": 0,
-            "y": 3,
-            "z": 0
-        },
-        "minDistance": 13,
-        "maxDistance": 21
-    },
-    "effectman": {
-        "scale": 1,
-        "bloom": {
-            "enabled": true,
-            "radius": 0.5,
-            "strength": 0.84,
-            "threshold": 0.18
-        },
-        "ssao": {
-            "enabled": true,
-            "kernelRadius": 2,
-            "kernelSize": 16,
-            "minDistance": 0,
-            "maxDistance": 0.1
-        }
-    },
-    "labelman": {
-        "origin": {
-            "x": 0,
-            "y": 0,
-            "z": 0
-        },
-        "opacity": {
-            "visible": 1.0,
-            "hidden": 0.25
-        }
-    },
-    "lightman": {
-        "dir": {
-            "color": "#efdf7f",
-            "intensity": 0.85,
-            "pos": {
-                "x": -10,
-                "y": 12,
-                "z": -10
-            },
-            "shadow": {
-                "enabled": true,
-                "mapSize": 512,
-                "top": 10,
-                "bottom": -10,
-                "left": -10,
-                "right": 10,
-                "helper": false
-            }
-        },
-        "env": {
-            "background": false,
-            "light": true
-        },
-        "hemi": {
-            "sky": "#afc4cf",
-            "ground": "#f1f2f3",
-            "intensity": 3.2,
-            "pos": {
-                "x": 0,
-                "y": 100,
-                "z": 0
-            }
-        }
-    },
     "renderman": {
         "autoClear": true,
         "antialias": true,
         "cam": {
             "pos": {
-                "x": -12,
-                "y": 12,
-                "z": 12
+                "x": 0,
+                "y": 1.5,
+                "z": 1.5
             },
-            "near": 6,
-            "far": 50,
-            "fov": 50,
+            "near": 0.1,
+            "far": 20,
+            "fov": 30,
             "base": 1.4
         },    
-        "exposure": 0.21
+        "exposure": 0.85
     },
-    "sceneman": {
-        "background": "#040506"
-    },
-    "slidesman": {
+    "controlman": {
         "target": {
             "x": 0,
-            "y": 3,
+            "y": 1.5,
             "z": 0
-        }
+        },
+        "minDistance": 0.75,
+        "maxDistance": 1.35,
+        "minAzimuthAngle": -60,
+        "maxAzimuthAngle": 60,
+        "minPolarAngle": 60,
+        "maxPolarAngle": 120
     }
 }
 `

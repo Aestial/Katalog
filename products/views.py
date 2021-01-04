@@ -26,7 +26,7 @@ def detail(request, product_slug, is_dev=False):
     })
 
 def dev(request):
-    return detail(request, "siemens-logo-8", True)
+    return detail(request, "dev-prod", True)
 
 def dictionary(annotations):
     d = {a.index:{        

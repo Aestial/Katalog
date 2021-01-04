@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/siemens-logo-8/main.js',
+    entry: './src/vrm-character/main.js',
     mode: 'development',
     output: {
         filename: 'bundle.js',
