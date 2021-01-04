@@ -5,17 +5,18 @@ import ControlManager from './controlman';
 import RenderManager from './renderman';
 import StatsManager from './statsman';
 
+const jumbotron = document.getElementById("jumbotron");
 const container = document.getElementById("three-container");
 // Render Manager
 let renderman = new RenderManager(container);
 // Control Manager
 let controlman = new ControlManager(renderman.camera, renderman.dom);
 // STATS
-let statsman = new StatsManager(container);
+let statsman = new StatsManager(jumbotron);
 // scene
 const scene = new THREE.Scene();
 // light
-const light = new THREE.DirectionalLight( 0xffeeff );
+const light = new THREE.DirectionalLight( 0xffffff );
 light.position.set( 1.0, 1.0, 1.0 ).normalize();
 scene.add( light );
 // lookat target
