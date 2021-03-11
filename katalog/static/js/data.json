@@ -11,7 +11,13 @@ json = `
             "z": 0
         },
         "minDistance": 13,
-        "maxDistance": 21
+        "maxDistance": 21,
+        "forcing": {
+            "rotSpeed": 0.015,
+            "pointerSpeed": 0.025,
+            "countHold": 10,
+            "countUp": 7
+        }        
     },
     "effectman": {
         "scale": 1,

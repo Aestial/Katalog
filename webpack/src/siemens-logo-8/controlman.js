@@ -99,11 +99,11 @@ export default class ControlManager {
         if ( this.isPointerDown )        {
             this.pointerSpeed = this.getPointerSpeed(event);
             console.log("POINTER speed:" + this.pointerSpeed);
-            if ( (this.rotationSpeed.x < 0.015 || this.rotationSpeed.y < 0.015)
-                 && this.pointerSpeed > 0.025) {
+            if ( (this.rotationSpeed.x < this.data.forcing.rotSpeed || this.rotationSpeed.y < this.data.forcing.rotSpeed)
+                 && this.pointerSpeed > this.data.forcing.pointerSpeed ) {
                 console.log("FORCING!!!!");
                 this.forceCount++;
-                if (this.forceCount > 19) {
+                if (this.forceCount > this.data.forcing.countHold ) {
                     console.log("RESET!!!!!!!!!!");
                     this.reset();
                 }
@@ -122,7 +122,7 @@ export default class ControlManager {
         // console.log("Orbit controls pointer up!");
         this.isPointerDown = false;
         delete this.lastPointer;
-        if (this.forceCount > 12) {
+        if (this.forceCount > this.data.forcing.countUp ) {
             console.log("RESET!!!!!!");
             this.reset();
         }
