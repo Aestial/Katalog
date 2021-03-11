@@ -28,7 +28,7 @@ function init() {
     logoman = new LogoManager(pointerman, object => {
         sceneman.add(object);
         animate();
-    }, labelman);
+    });
     // Effect Manager
     effectman = new EffectManager(renderman.camera, renderman.renderer, sceneman.scene);
     // Control Manager

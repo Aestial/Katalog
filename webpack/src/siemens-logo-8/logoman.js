@@ -1,10 +1,9 @@
 import * as THREE from 'three';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
 export default class LogoManager {
-    constructor(pointerman, callback, labelman){
+    constructor(pointerman, callback){
         this.pointerman = pointerman;
         this.callback = callback;
-        this.labelman = labelman;
         this.layers = data.layers;
         this.loadTextures();
         this.createMaterials();
