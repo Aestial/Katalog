@@ -5,7 +5,9 @@ export default class ControlManager {
         this.data = data.controlman;
         this.camera = camera;
         this.controls = new OrbitControls(camera, domElement);
-        this.clock = new THREE.Clock();            
+        this.rotationSpeed = new THREE.Vector2();
+        this.lastAngles = new THREE.Vector2();
+        this.clock = new THREE.Clock();
         this.controls.keys = {
             UP: 87, // W
             LEFT: 65, // A
@@ -30,7 +32,6 @@ export default class ControlManager {
         document.addEventListener('pointermove', pointerMoveListener, false);
         document.addEventListener('pointerdown', pointerDownListener, false);
         document.addEventListener('pointerup', pointerUpListener, false);
-
         this.set();
         this.update();        
     }
@@ -78,24 +79,28 @@ export default class ControlManager {
     }
     onInteractionStarted() {
         console.log("Orbit controls interaction started!");
-        this.lastAzimAngle = this.getAzimuthalAngleAbsDeg();        
+        this.lastAngles.x = this.getAzimuthalAngleAbsDeg();
+        this.lastAngles.y = this.getPolarAngleAbsDeg();
     }
     onInteractionEnded() {
         console.log("Orbit controls interaction ended!");
-        this.lastAzimAngle = 0; // delete
     }
     onChanged() {
         // console.log("Orbit controls changed!");
-        this.azimuthSpeed = this.getAzimuthSpeed();
-        // console.log("AZ rot speed:" + this.azimuthSpeed);
+        // this.azimuthSpeed = this.getAzimuthSpeed();
+        this.rotationSpeed.x = this.getAzimuthSpeed();
+        this.rotationSpeed.y = this.getPolarSpeed();
+        console.log("Azimuth rotation speed:" + this.rotationSpeed.x);
+        console.log("Polar rotation speed:" + this.rotationSpeed.y);
     }
     onDocumentPointerMove(event) {
         event.preventDefault();        
         // console.log("Orbit controls pointer moving!");
         if ( this.isPointerDown )        {
             this.pointerSpeed = this.getPointerSpeed(event);
-            // console.log("POINTER speed:" + this.pointerSpeed);
-            if ( this.azimuthSpeed <= 0.015 && this.pointerSpeed > 0.05) {
+            console.log("POINTER speed:" + this.pointerSpeed);
+            if ( (this.rotationSpeed.x < 0.015 || this.rotationSpeed.y < 0.015)
+                 && this.pointerSpeed > 0.025) {
                 console.log("FORCING!!!!");
                 this.forceCount++;
                 if (this.forceCount > 19) {
@@ -126,12 +131,23 @@ export default class ControlManager {
         var deltaTime = this.clock.getDelta();
         var azimAngle = this.getAzimuthalAngleAbsDeg();
         // console.log("Orbit controls current azimuthal angle:" + azimAngle);
-        var deltaAzimAngle = this.lastAzimAngle - azimAngle;
+        var deltaAzimAngle = this.lastAngles.x - azimAngle;
         // console.log("Orbit controls delta azimuthal angle:" + this.deltaAzimAngle);
         var speed = Math.abs( deltaAzimAngle / deltaTime );
         // console.log("Orbit controls azimuthal rotation speed:" + this.deltaAzimAngle);
-        this.lastAzimAngle = azimAngle;
-        return speed;
+        this.lastAngles.x = azimAngle;
+        return speed / 100;
+    } 
+    getPolarSpeed() {
+        var deltaTime = this.clock.getDelta();
+        var polarAngle = this.getPolarAngleAbsDeg();
+        // console.log("Orbit controls current azimuthal angle:" + polarAngle);
+        var deltaPolarAngle = this.lastAngles.y - polarAngle;
+        // console.log("Orbit controls delta azimuthal angle:" + this.deltaPolarAngle);
+        var speed = Math.abs( deltaPolarAngle / deltaTime );
+        // console.log("Orbit controls azimuthal rotation speed:" + this.deltaPolarAngle);
+        this.lastAngles.y = polarAngle;
+        return speed / 100;
     }    
     getPointerSpeed(event) {
         var deltaTime = this.clock.getDelta();
@@ -143,6 +159,9 @@ export default class ControlManager {
     }
     getAzimuthalAngleAbsDeg() {
         return this.controls.getAzimuthalAngle() + Math.PI;
+    }
+    getPolarAngleAbsDeg() {
+        return this.controls.getPolarAngle();
     }
     getPointerCoordinates(event) {
         const x = (event.clientX / window.innerWidth) * 2 - 1;
