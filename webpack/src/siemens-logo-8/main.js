@@ -1,15 +1,15 @@
 import RenderManager from './renderman';
 import SceneManager from './sceneman';
 import EffectManager from './effectman';
-import PointerManager from './pointman';
-import LogoManager from './logoman';
-import ControlManager from './controlman';
+import ObjectPointer from './ObjectPointer';
+import Logo from './Logo';
+import ImprovedOrbitControl from './ImprovedOrbitControl';
 import StatsManager from './statsman';
 import LabelManager from './labelman';
 import SlidesManager from './slidesman';
 
 let renderman, sceneman, effectman;
-let controlman, logoman, pointerman, labelman;
+let control, logo, pointer, labelman;
 let statsman;
 
 init();
@@ -19,22 +19,22 @@ function init() {
     // Render Manager
     renderman = new RenderManager(container);   
     // Pointer Manager
-    pointerman = new PointerManager(renderman.camera);
+    pointer = new ObjectPointer(renderman.camera);
     // Scene Manager
     sceneman = new SceneManager(renderman.renderer);    
     // Label Manager
     labelman = new LabelManager(container, renderman.camera, sceneman.scene);
     // LOGO Manager
-    logoman = new LogoManager(pointerman, object => {
+    logo = new Logo(pointer, object => {
         sceneman.add(object);
         animate();
     });
     // Effect Manager
     effectman = new EffectManager(renderman.camera, renderman.renderer, sceneman.scene);
     // Control Manager
-    controlman = new ControlManager(renderman.camera, labelman.dom);
+    control = new ImprovedOrbitControl(renderman.camera, labelman.dom);
     // Slides
-    window.slides = new SlidesManager(controlman);
+    window.slides = new SlidesManager(control);
     // Stats
     statsman = new StatsManager(container);
     // Start    
@@ -49,10 +49,10 @@ function animate() {
     render();
 }
 function render() {
-    pointerman.update();
+    pointer.update();
     labelman.update();
     renderman.clear();
     effectman.render();
-    controlman.update();
+    control.update();
     statsman.update();
 }

@@ -5,6 +5,7 @@ json = `
         "BLOOM_SCENE": 1
     },
     "controlman": {
+        "autoRotate": false,
         "target": {
             "x": 0,
             "y": 3,
