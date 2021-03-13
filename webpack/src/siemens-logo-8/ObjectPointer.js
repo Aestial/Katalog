@@ -1,26 +1,34 @@
 import * as THREE from 'three';
 
-export default class PointerManager {
+export default class ObjectPointer {
     constructor(camera){
         this.layers = data.layers;
         this.camera = camera;        
         this.raycaster = new THREE.Raycaster();        
         this.pointer = new THREE.Vector2();
         this.targets = [];
-        this.events = {};
+        this.onPointerDownListeners = {};
+        this.onPointerUpListeners = {};
         this.intersected = null;
+        this.pressed = null;
         // Event binding
         const pointerMoveListener = this.onDocumentPointerMove.bind(this);
         document.addEventListener('pointermove', pointerMoveListener, false);
         const pointerDownListener = this.onDocumentPointerDown.bind(this);
         document.addEventListener('pointerdown', pointerDownListener, false);
+        const pointerUpListener = this.onDocumentPointerUp.bind(this);
+        document.addEventListener('pointerup', pointerUpListener, false);
     }
     add(mesh){
         this.targets.push(mesh);
     }
-    addEvent(target, event) {
+    addOnPointerDownListener(target, event) {
         this.targets.push(target);
-        this.events[target.name] = event; 
+        this.onPointerDownListeners[target.name] = event; 
+    }
+    addOnPointerUpistener(target, event) {
+        this.targets.push(target);
+        this.onPointerUpListeners[target.name] = event; 
     }
     update() {
         // Find intersections
@@ -36,6 +44,7 @@ export default class PointerManager {
                 this.intersected = intersects[0].object;
                 this.intersected.currentHex = this.intersected.material.emissive.getHex();
                 this.intersected.material.emissive.setHex(0x7f7f7f);
+                this.intersected.material.emissiveIntensity = 0.5;
                 this.intersected.layers.enable(this.layers.BLOOM_SCENE);
             }            
         } else {
@@ -54,8 +63,17 @@ export default class PointerManager {
     onDocumentPointerDown(event) {
         event.preventDefault();
         if (this.intersected) {
-            this.events[this.intersected.name]();
+            this.onPointerDownListeners[this.intersected.name]();
             console.log(this.intersected.name + ' pressed!');
+            this.pressed = this.intersected;
         }            
-    }    
+    }
+    onDocumentPointerUp(event) {
+        event.preventDefault();
+        if (this.pressed) {
+            this.onPointerUpListeners[this.pressed.name]();
+            console.log(this.pressed.name + ' unpressed!');
+            this.pressed = null;
+        }
+    }
 }
