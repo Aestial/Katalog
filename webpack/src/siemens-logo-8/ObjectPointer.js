@@ -38,19 +38,19 @@ export default class ObjectPointer {
             if (this.intersected != intersects[0].object) {
                 
                 if (this.intersected) {
-                    this.intersected.material.emissive.setHex(this.intersected.currentHex);
-                    this.intersected.layers.disable(this.layers.BLOOM_SCENE);
+                    // this.intersected.material.emissive.setHex(this.intersected.currentHex);
+                    // this.intersected.layers.disable(this.layers.BLOOM_SCENE);
                 }                    
                 this.intersected = intersects[0].object;
-                this.intersected.currentHex = this.intersected.material.emissive.getHex();
-                this.intersected.material.emissive.setHex(0x7f7f7f);
-                this.intersected.material.emissiveIntensity = 0.5;
-                this.intersected.layers.enable(this.layers.BLOOM_SCENE);
+                // this.intersected.currentHex = this.intersected.material.emissive.getHex();
+                // this.intersected.material.emissive.setHex(0x7f7f7f);
+                // this.intersected.material.emissiveIntensity = 0.5;
+                // this.intersected.layers.enable(this.layers.BLOOM_SCENE);
             }            
         } else {
             if (this.intersected) {
-                this.intersected.material.emissive.setHex(this.intersected.currentHex);
-                this.intersected.layers.disable(this.layers.BLOOM_SCENE);
+                // this.intersected.material.emissive.setHex(this.intersected.currentHex);
+                // this.intersected.layers.disable(this.layers.BLOOM_SCENE);
             }            
             this.intersected = null;
         }
