@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-export default class ControlManager {
+export default class ImprovedOrbitControl {
     constructor(camera, domElement){
         this.data = data.controlman;
         this.camera = camera;
@@ -39,7 +39,7 @@ export default class ControlManager {
         this.controls.target.set(this.data.target.x, this.data.target.y, this.data.target.z);
         this.controls.maxDistance = this.data.maxDistance;
         this.controls.minDistance = this.data.minDistance;        
-        this.controls.autoRotate = true;
+        this.controls.autoRotate = this.data.autoRotate;
         this.controls.enableDamping = true;
         this.controls.enablePan = false;
         // this.controls.rotateSpeed = 0.25;
@@ -78,33 +78,33 @@ export default class ControlManager {
         this.setPosition(currentPosition); // TODO: SMOOTH
     }
     onInteractionStarted() {
-        console.log("Orbit controls interaction started!");
+        // console.log("Orbit controls interaction started!");
         this.lastAngles.x = this.getAzimuthalAngleAbsDeg();
         this.lastAngles.y = this.getPolarAngleAbsDeg();
     }
     onInteractionEnded() {
-        console.log("Orbit controls interaction ended!");
+        // console.log("Orbit controls interaction ended!");
     }
     onChanged() {
         // console.log("Orbit controls changed!");
         // this.azimuthSpeed = this.getAzimuthSpeed();
         this.rotationSpeed.x = this.getAzimuthSpeed();
         this.rotationSpeed.y = this.getPolarSpeed();
-        console.log("Azimuth rotation speed:" + this.rotationSpeed.x);
-        console.log("Polar rotation speed:" + this.rotationSpeed.y);
+        // console.log("Azimuth rotation speed:" + this.rotationSpeed.x);
+        // console.log("Polar rotation speed:" + this.rotationSpeed.y);
     }
     onDocumentPointerMove(event) {
         event.preventDefault();        
         // console.log("Orbit controls pointer moving!");
         if ( this.isPointerDown )        {
             this.pointerSpeed = this.getPointerSpeed(event);
-            console.log("POINTER speed:" + this.pointerSpeed);
+            // console.log("POINTER speed:" + this.pointerSpeed);
             if ( (this.rotationSpeed.x < this.data.forcing.rotSpeed || this.rotationSpeed.y < this.data.forcing.rotSpeed)
                  && this.pointerSpeed > this.data.forcing.pointerSpeed ) {
-                console.log("FORCING!!!!");
+                // console.log("FORCING!!!!");
                 this.forceCount++;
                 if (this.forceCount > this.data.forcing.countHold ) {
-                    console.log("RESET!!!!!!!!!!");
+                    // console.log("RESET!!!!!!!!!!");
                     this.reset();
                 }
             }
@@ -123,7 +123,7 @@ export default class ControlManager {
         this.isPointerDown = false;
         delete this.lastPointer;
         if (this.forceCount > this.data.forcing.countUp ) {
-            console.log("RESET!!!!!!");
+            // console.log("RESET!!!!!!");
             this.reset();
         }
     }
