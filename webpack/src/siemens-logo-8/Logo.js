@@ -1,8 +1,10 @@
 import * as THREE from 'three';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
-export default class LogoManager {
-    constructor(pointerman, callback){
-        this.pointerman = pointerman;
+import Button from './Button';
+
+export default class Logo {
+    constructor(pointer, callback){
+        this.pointer = pointer;
         this.callback = callback;
         this.layers = data.layers;
         this.loadTextures();
@@ -85,16 +87,7 @@ export default class LogoManager {
                 transparent: true,
                 opacity: 0.35,
             }),
-            button: new THREE.MeshStandardMaterial({
-                color: 0x9CB7B4,
-                roughness: 1,
-                metalness: 0,
-            }),
-            okbutton: new THREE.MeshStandardMaterial({
-                color: 0x00A247,
-                roughness: 1,
-                metalness: 0,
-            }),
+            
         };        
     }
     loadTextures() {
@@ -137,46 +130,34 @@ export default class LogoManager {
                     child.material = this.materials.screencover;
                     break;
                 case 'Button-L':
-                    child.material = this.materials.button.clone();
-                    event = function () {
+                    new Button(child, 0, this.pointer, () => {
                         this.changeDisplayColor('off');
-                    }.bind(this);
-                    this.pointerman.addEvent(child, event);
+                    });
                     break;
                 case 'Button-U':
-                    child.material = this.materials.button.clone();
-                    event = function () {
+                    new Button(child, 0, this.pointer, () => {
                         this.changeDisplayColor('white');
-                    }.bind(this);
-                    this.pointerman.addEvent(child, event);
+                    });
                     break;
                 case 'Button-R':
-                    child.material = this.materials.button.clone();
-                    event = function () {
+                    new Button(child, 0, this.pointer, () => {
                         this.changeDisplayColor('amber');
-                    }.bind(this);
-                    this.pointerman.addEvent(child, event);
+                    });
                     break;
                 case 'Button-D':
-                    child.material = this.materials.button.clone();
-                    event = function () {
+                    new Button(child, 0, this.pointer, () => {
                         this.changeDisplayColor('red');
-                    }.bind(this);
-                    this.pointerman.addEvent(child, event);
+                    });
                     break;
                 case "Button-Ok":
-                    child.material = this.materials.okbutton;
-                    event = function () {
-                        //                        
-                    }.bind(this);
-                    this.pointerman.addEvent(child, event);
+                    new Button(child, 1, this.pointer, () => {
+                        // this.changeDisplayColor('red');
+                    });
                     break;
                 case "Button-Esc":
-                    child.material = this.materials.button.clone();
-                    event = function () {
-                        //
-                    }.bind(this);
-                    this.pointerman.addEvent(child, event);
+                    new Button(child, 0, this.pointer, () => {
+                        // this.changeDisplayColor('red');
+                    });
                     break;
                 default:
                     break;                
