@@ -21,7 +21,7 @@ json = `
         }        
     },
     "effectman": {
-        "scale": 1,
+        "scale": 1.5,
         "bloom": {
             "enabled": true,
             "radius": 0.5,
