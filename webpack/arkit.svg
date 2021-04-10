@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="335px" preserveAspectRatio="none" style="width:989px;height:335px;" version="1.1" viewBox="0 0 989 335" width="989px" zoomAndPan="magnify"><defs/><g><!--MD5=[a6f11bb19cee6b13000111f5ad685e8b]
+cluster Dependencies--><path d="M414.5,240 L508.5,240 A4.5,4.5 0 0 1 511.5,243 L518.5,260.4844 L542.5,260.4844 A3,3 0 0 1 545.5,263.4844 L545.5,320 A3,3 0 0 1 542.5,323 L414.5,323 A3,3 0 0 1 411.5,320 L411.5,243 A3,3 0 0 1 414.5,240 " fill="#FFFFFF" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="411.5" x2="518.5" y1="260.4844" y2="260.4844"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="94" x="415.5" y="254.0059">Dependencies</text><!--MD5=[8ae7cf8ccb4ec9568367d33d270cada3]
+entity dat--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #383838; stroke-width: 1.0;" width="38" x="427.5" y="273"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="422.5" y="278"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="422.5" y="297.4844"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="18" x="437.5" y="295.0059">dat</text><!--MD5=[5e5ae108149962495abf7487b9552b34]
+entity three--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #383838; stroke-width: 1.0;" width="49" x="480" y="273"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="475" y="278"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="475" y="297.4844"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="29" x="490" y="295.0059">three</text><!--MD5=[4b4a333958f851a6830692fda943ad24]
+entity _button--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #000000; stroke-width: 0.5;" width="63" x="801" y="99"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="43" x="811" y="121.0059">button</text><!--MD5=[cb688dbb0f579689ec56e9c9c265e2f9]
+entity _controlman--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #000000; stroke-width: 0.5;" width="86" x="189.5" y="99"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="66" x="199.5" y="121.0059">controlman</text><!--MD5=[e8a344a73e70b8260b6a85fb47a7661e]
+entity _effectman--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #000000; stroke-width: 0.5;" width="78" x="289.5" y="99"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="58" x="299.5" y="121.0059">effectman</text><!--MD5=[a45e616109026664c0b5ac66f3e85f63]
+entity _labelman--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #000000; stroke-width: 0.5;" width="72" x="693.5" y="36"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="52" x="703.5" y="58.0059">labelman</text><!--MD5=[870a1aa2033feef3711ed793d5592782]
+entity _lightman--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #000000; stroke-width: 0.5;" width="69" x="586" y="99"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="49" x="596" y="121.0059">lightman</text><!--MD5=[887e5cda92d3929d649dddfbd5ec4440]
+entity _logoman--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #000000; stroke-width: 0.5;" width="71" x="382" y="99"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="51" x="392" y="121.0059">logoman</text><ellipse cx="417.6274" cy="53.242" fill="#F8F8F8" rx="25.6274" ry="13.242" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="401.6274" y="56.9842">main</text><!--MD5=[43e7387dd8d24ebaba19e45a2fa3b4c3]
+entity _pointman--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #000000; stroke-width: 0.5;" width="74" x="467.5" y="99"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="54" x="477.5" y="121.0059">pointman</text><!--MD5=[f407658b8f46e69f1bec49defc94dd60]
+entity _renderman--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #000000; stroke-width: 0.5;" width="81" x="6" y="99"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="61" x="16" y="121.0059">renderman</text><!--MD5=[02aec2cf986ff6179b8d41f9a2cba326]
+entity _sceneman--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #000000; stroke-width: 0.5;" width="80" x="505.5" y="36"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="60" x="515.5" y="58.0059">sceneman</text><ellipse cx="910.6025" cy="177.9205" fill="#F8F8F8" rx="67.6025" ry="15.9205" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="107" x="857.1025" y="181.6627">siemens-logo-7</text><!--MD5=[e64e9101827883c3a82b0aa888e87b6d]
+entity _slidesman--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #000000; stroke-width: 0.5;" width="79" x="600" y="36"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="59" x="610" y="58.0059">slidesman</text><!--MD5=[1b09f0b66a49d5da35d341333c37ab6e]
+entity _statsman--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #000000; stroke-width: 0.5;" width="74" x="101.5" y="99"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="54" x="111.5" y="121.0059">statsman</text><!--MD5=[4bf237de8b6d88ec482f0cdd213340f9]
+entity _stringhelper--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #000000; stroke-width: 0.5;" width="87" x="669" y="99"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="67" x="679" y="121.0059">stringhelper</text><ellipse cx="845.4562" cy="53.0912" fill="#F8F8F8" rx="65.9562" ry="15.5912" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="103" x="793.9562" y="56.8334">webpack.config</text><!--MD5=[a8f4dc01b8311e359ca90e76f795b84a]
+link _button to three--><path d="M830.688,133.114 C827.146,156.729 817.064,200.477 789.5,224 C751.013,256.8441 599.581,277.9577 534.495,285.6889 " fill="none" id="_button-&gt;three" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="529.215,286.3092,538.6199,289.2328,534.1809,285.7263,537.6873,281.2873,529.215,286.3092" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[e63391c4d7ce1fd966149c7985cac9cf]
+link _controlman to three--><path d="M266.038,133.031 C331.932,164.534 471.984,231.517 472.5,232 C483.078,241.9145 491.067,256.1283 496.418,267.8815 " fill="none" id="_controlman-&gt;three" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="498.549,272.7482,498.6027,262.8995,496.5433,268.1681,491.2746,266.1087,498.549,272.7482" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[b678b806e4116790722bd04e0afeb9c6]
+link _effectman to dat--><path d="M339.601,133.181 C361.125,164.555 408.499,233.609 432.286,268.2807 " fill="none" id="_effectman-&gt;dat" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="435.342,272.7364,433.5488,263.0522,432.5134,268.6134,426.9521,267.578,435.342,272.7364" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[699ac8608152a635174fb127ab76e2da]
+link _effectman to three--><path d="M354.14,133.003 C385.034,153.219 437.182,190.427 472.5,232 C481.758,242.8976 489.655,256.8761 495.287,268.2627 " fill="none" id="_effectman-&gt;three" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="497.56,272.9675,497.2473,263.1236,495.3853,268.4652,490.0437,266.6032,497.56,272.9675" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[1a673469ae0f63577a778df43261c776]
+link _labelman to _stringhelper--><path d="M725.033,70.027 C723.019,77.255 720.612,85.894 718.447,93.659 " fill="none" id="_labelman-&gt;_stringhelper" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="716.996,98.868,723.2658,91.2727,718.3386,94.0516,715.5597,89.1244,716.996,98.868" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[77bd491499283a7eeb694011028d3bd7]
+link _labelman to three--><path d="M744.87,70.257 C758.371,86.604 774.182,112.285 762.5,133 C712.708,221.293 590.61,265.2743 534.093,281.4596 " fill="none" id="_labelman-&gt;three" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="529.159,282.8495,538.9064,284.2594,533.9717,281.4938,536.7373,276.5591,529.159,282.8495" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[f15a265b06280dce8e3ef3c728601b23]
+link _lightman to three--><path d="M615.84,133.296 C609.061,155.249 595.01,194.917 574.5,224 C562.269,241.3436 544.775,257.5899 530.335,269.5021 " fill="none" id="_lightman-&gt;three" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="526.35,272.7444,535.8556,270.1669,530.2284,269.5887,530.8065,263.9615,526.35,272.7444" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[6052e237c1cbd159ba15dc826c84024f]
+link _logoman to three--><path d="M426.735,133.134 C431.545,141.659 437.459,152.332 442.5,162 C461.749,198.917 482.72,242.6925 494.673,268.0143 " fill="none" id="_logoman-&gt;three" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="496.94,272.8251,496.7215,262.9787,494.8084,268.3022,489.4849,266.3892,496.94,272.8251" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[c0c8e2298834d8adb27539f32b53edab]
+link <b>main</b> to _controlman--><path d="M396.995,60.761 C369.174,69.934 318.615,86.605 280.865,99.052 " fill="none" id="&lt;b&gt;main&lt;/b&gt;-&gt;_controlman" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="275.862,100.702,285.6619,101.6826,280.6105,99.1363,283.1568,94.0849,275.862,100.702" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[f224660d5ce313aaa8f0f6667edb8706]
+link <b>main</b> to _effectman--><path d="M403.201,63.801 C390.625,72.42 371.955,85.216 356.427,95.859 " fill="none" id="&lt;b&gt;main&lt;/b&gt;-&gt;_effectman" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="352.139,98.798,361.824,97.0087,356.2631,95.971,357.3007,90.4101,352.139,98.798" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[87dfcb416d38c19ace8c2b2fd1243fc9]
+link <b>main</b> to _labelman--><path d="M436.213,44.168 C453.686,36.442 480.719,25.802 505.5,21.5 C581.256,8.35 604.535,0.499 678.5,21.5 C687.122,23.948 695.715,28.314 703.323,33.031 " fill="none" id="&lt;b&gt;main&lt;/b&gt;-&gt;_labelman" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="707.924,35.999,702.531,27.7579,703.7229,33.2878,698.193,34.4797,707.924,35.999" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[8655ef129fd95c8d0b4b4710716fac40]
+link <b>main</b> to _logoman--><path d="M417.5,66.052 C417.5,73.83 417.5,84.173 417.5,93.347 " fill="none" id="&lt;b&gt;main&lt;/b&gt;-&gt;_logoman" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="417.5,98.585,421.5,89.585,417.5,93.585,413.5,89.585,417.5,98.585" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[6709b837cbd1f08978db6f7dd4d8f613]
+link <b>main</b> to _pointman--><path d="M431.866,64.073 C444.218,72.734 462.371,85.461 477.439,96.026 " fill="none" id="&lt;b&gt;main&lt;/b&gt;-&gt;_pointman" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="481.599,98.943,476.5287,90.4996,477.5059,96.0714,471.9341,97.0486,481.599,98.943" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[9b7faee97518e6d4e2beecfc46d7ea8d]
+link <b>main</b> to _renderman--><path d="M392.496,55.912 C337.853,60.431 203.925,73.369 94.5,99 C93.7516,99.175 92.9984,99.357 92.2414,99.545 " fill="none" id="&lt;b&gt;main&lt;/b&gt;-&gt;_renderman" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="87.2044,100.867,96.9249,102.452,92.0407,99.5981,94.8946,94.7139,87.2044,100.867" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[85c9f0b2109605c0d55c6f05e898dd28]
+link <b>main</b> to _sceneman--><path d="M443,53 C462.031,53 481.062,53 500.093,53 " fill="none" id="&lt;b&gt;main&lt;/b&gt;-&gt;_sceneman" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="505.461,53,496.461,49,500.461,53,496.461,57,505.461,53" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[ac6ac8ad9dbbd7889e8a9c166b033d92]
+link <b>main</b> to _slidesman--><path d="M436.213,44.168 C453.686,36.442 480.719,25.802 505.5,21.5 C540.532,15.419 551.177,12.221 585.5,21.5 C594.694,23.986 603.93,28.468 612.098,33.287 " fill="none" id="&lt;b&gt;main&lt;/b&gt;-&gt;_slidesman" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="616.519,35.988,610.9245,27.8824,612.2523,33.3812,606.7535,34.709,616.519,35.988" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[dd7771479d80d93c770e2fdd51592c32]
+link <b>main</b> to _statsman--><path d="M393.188,57.346 C350.206,63.551 258.187,78.136 182.5,99 C181.951,99.151 181.4,99.306 180.846,99.464 " fill="none" id="&lt;b&gt;main&lt;/b&gt;-&gt;_statsman" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="175.815,100.972,185.5845,102.2196,180.6045,99.5364,183.2876,94.5564,175.815,100.972" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[2f77cf98b8f7736bcda452bca2361240]
+link _pointman to three--><path d="M504.5,133.181 C504.5,164.298 504.5,232.484 504.5,267.4248 " fill="none" id="_pointman-&gt;three" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="504.5,272.7364,508.5,263.7364,504.5,267.7364,500.5,263.7364,504.5,272.7364" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[f9bd5ba093e576a102a8f27d20a5c3a5]
+link _renderman to three--><path d="M80.4233,133.066 C118.555,150.505 182.703,177.998 240.5,194 C253.087,197.485 461.801,224.509 472.5,232 C484.811,240.6189 492.948,255.5727 497.935,268.0015 " fill="none" id="_renderman-&gt;three" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="499.757,272.7968,500.2999,262.9629,497.9812,268.1228,492.8214,265.8041,499.757,272.7968" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[7413db62af918f0c8a9acaa2f8b41d14]
+link _sceneman to _lightman--><path d="M565.205,70.027 C574.861,77.88 586.565,87.399 596.715,95.654 " fill="none" id="_sceneman-&gt;_lightman" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="600.666,98.868,596.2074,90.0862,596.7869,95.7133,591.1598,96.2928,600.666,98.868" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[5ae6e4233894cd7e49f8ed559bbf9bef]
+link _sceneman to three--><path d="M546.844,70.234 C547.486,78.785 548.182,89.453 548.5,99 C549.003,114.103 550.571,118.031 548.5,133 C541.647,182.538 523.104,238.478 512.404,268.0567 " fill="none" id="_sceneman-&gt;three" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="510.63,272.9193,517.473,265.836,512.3441,268.2223,509.9578,263.0934,510.63,272.9193" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[6bab8cc43c793ccf44453550cd771859]
+link <b>siemens-logo-7</b> to three--><path d="M889.621,193.376 C874.2,203.361 852.353,216.222 831.5,224 C726.214,263.27 592.556,280.3606 534.11,286.3271 " fill="none" id="&lt;b&gt;siemens-logo-7&lt;/b&gt;-&gt;three" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="529.026,286.8373,538.3809,289.9173,534.0009,286.3373,537.5809,281.9574,529.026,286.8373" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[caa1c5fa1642b59f1af8b7fb6c02b96b]
+link _slidesman to _stringhelper--><path d="M658.68,70.027 C668.078,77.88 679.47,87.399 689.349,95.654 " fill="none" id="_slidesman-&gt;_stringhelper" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="693.195,98.868,688.8527,90.028,689.3579,95.6623,683.7236,96.1674,693.195,98.868" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[8b53919be8c619efc1bd76c10ae6e962]
+link _statsman to three--><path d="M173.251,133.121 C210.201,149.849 270.625,176.032 324.5,194 C340.606,199.371 459.039,221.654 472.5,232 C484.336,241.0968 492.457,255.8942 497.556,268.1323 " fill="none" id="_statsman-&gt;three" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="499.429,272.8512,499.827,263.0104,497.5846,268.2038,492.3912,265.9614,499.429,272.8512" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[f134730293e422ce90f42f128d01f5fa]
+link _stringhelper to three--><path d="M693.683,133.094 C668.994,154.157 624.248,192.138 585.5,224 C566.627,239.5191 545.037,256.8222 528.896,269.6717 " fill="none" id="_stringhelper-&gt;three" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="524.914,272.8388,534.4474,270.3661,528.8269,269.726,529.467,264.1055,524.914,272.8388" style="stroke: #000000; stroke-width: 0.5;"/><script type="text/plantuml"><![CDATA[MD5=[8049f05bf2c4ffdb892402caabd7c369]
+@startuml
+
+scale max 1920 width
+top to bottom direction
+
+skinparam nodesep 14
+skinparam ranksep 29
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Tahoma
+skinparam defaultFontSize 12
+skinparam roundCorner 6
+skinparam dpi 150
+skinparam arrowColor black
+skinparam arrowThickness 0.5
+skinparam packageTitleAlignment left
+
+skinparam usecase {
+  borderThickness 0.5
+}
+
+skinparam rectangle {
+  borderThickness 0.5
+}
+
+skinparam component {
+  borderThickness 1
+}
+
+
+rectangle "<b>button</b>" as _button
+rectangle "controlman" as _controlman
+rectangle "effectman" as _effectman
+rectangle "labelman" as _labelman
+rectangle "lightman" as _lightman
+rectangle "logoman" as _logoman
+(<b>main</b>)
+rectangle "pointman" as _pointman
+rectangle "renderman" as _renderman
+rectangle "sceneman" as _sceneman
+(<b>siemens-logo-7</b>)
+rectangle "slidesman" as _slidesman
+rectangle "statsman" as _statsman
+rectangle "stringhelper" as _stringhelper
+(<b>webpack.config</b>)
+
+package "Dependencies" {
+  [dat]
+  [three]
+}
+
+_button ----[thickness=1]> [three]
+_controlman ----> [three]
+_effectman ----> [dat]
+_effectman ----> [three]
+_labelman --> _stringhelper
+_labelman ----> [three]
+_lightman ----> [three]
+_logoman ----> [three]
+(<b>main</b>) -[thickness=1]> _controlman
+(<b>main</b>) -[thickness=1]> _effectman
+(<b>main</b>) -[thickness=1]> _labelman
+(<b>main</b>) -[thickness=1]> _logoman
+(<b>main</b>) -[thickness=1]> _pointman
+(<b>main</b>) -[thickness=1]> _renderman
+(<b>main</b>) -[thickness=1]> _sceneman
+(<b>main</b>) -[thickness=1]> _slidesman
+(<b>main</b>) -[thickness=1]> _statsman
+_pointman ----> [three]
+_renderman ----> [three]
+_sceneman --> _lightman
+_sceneman ----> [three]
+(<b>siemens-logo-7</b>) ---[thickness=1]> [three]
+_slidesman --> _stringhelper
+_statsman ----> [three]
+_stringhelper ----> [three]
+
+@enduml
+
+
+' View and edit on https://arkit.pro
+]]></script></g></svg>

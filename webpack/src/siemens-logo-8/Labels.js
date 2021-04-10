@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
-import {default as sh} from './stringhelper';
+import {default as sh} from './StringHelper';
 
-export default class LabelManager {
+export default class Labels {
     constructor(container, camera, scene) {
         this.data = data.labelman;
         this.container = container;

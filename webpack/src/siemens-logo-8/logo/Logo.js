@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
 import Button from './Button';
+import Led from './Led';
 
 export default class Logo {
     constructor(pointer, callback){
@@ -87,7 +88,6 @@ export default class Logo {
                 transparent: true,
                 opacity: 0.35,
             }),
-            
         };        
     }
     loadTextures() {
@@ -103,12 +103,15 @@ export default class Logo {
         this.object = object;
     }
     processChild(child) {
-        // console.log(child);
+        console.log(child);
         if (child.isMesh) {
             child.castShadow = true;
             child.receiveShadow = true;
             let event;
             switch (child.name) {
+                case "LED":
+                    new Led(child, true);
+                    break;
                 case "Body":
                     child.material = this.materials.body;
                     break;

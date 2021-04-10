@@ -1,4 +1,4 @@
-import {default as sh} from './stringhelper';
+import {default as sh} from './StringHelper';
 
 export default class SlidesManager {
     constructor(controlman) {
@@ -16,6 +16,10 @@ export default class SlidesManager {
             // console.log(e.to);
             this.updateControls(e.to);
             this.updateInfo(e.to);
+            this.updateModal(this.current.title, this.current.content);
+            // IF NOT MOVILE:
+                // this.showModal();
+
         });
         this.saveHelp();
     }
@@ -27,13 +31,16 @@ export default class SlidesManager {
     }
     goto(index) {
         this.carousel.carousel(index);
+        if (index == 0) {
+            $('#rightModal').modal('hide');
+        }
     }
     showHelp() {
         this.updateModal(this.help.title,this.help.content);
         $('#rightModal').modal('show');
     }
     showModal() {
-        this.updateModal(this.current.title, this.current.content);
+        $('#rightModal').modal({backdrop: false});
         $('#rightModal').modal('show');
     }
     saveHelp() {

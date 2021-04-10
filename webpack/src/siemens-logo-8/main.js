@@ -2,10 +2,10 @@ import RenderManager from './renderman';
 import SceneManager from './sceneman';
 import EffectManager from './effectman';
 import ObjectPointer from './ObjectPointer';
-import Logo from './Logo';
+import Logo from './logo/Logo';
 import ImprovedOrbitControl from './ImprovedOrbitControl';
 import StatsManager from './statsman';
-import LabelManager from './labelman';
+import Labels from './Labels';
 import SlidesManager from './slidesman';
 
 let renderman, sceneman, effectman;
@@ -23,7 +23,7 @@ function init() {
     // Scene Manager
     sceneman = new SceneManager(renderman.renderer);    
     // Label Manager
-    labelman = new LabelManager(container, renderman.camera, sceneman.scene);
+    labelman = new Labels(container, renderman.camera, sceneman.scene);
     // LOGO Manager
     logo = new Logo(pointer, object => {
         sceneman.add(object);
@@ -42,10 +42,9 @@ function init() {
 }
 
 function animate() {
-    requestAnimationFrame(animate);
-    // setTimeout(() => {
-        
-    // }, 1000 / 30);
+    setTimeout(() => {
+        requestAnimationFrame(animate);    
+    }, 1000 / 30);
     render();
 }
 function render() {

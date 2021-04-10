@@ -64,7 +64,7 @@ export default class ObjectPointer {
         event.preventDefault();
         if (this.intersected) {
             this.onPointerDownListeners[this.intersected.name]();
-            console.log(this.intersected.name + ' pressed!');
+            // console.log(this.intersected.name + ' pressed!');
             this.pressed = this.intersected;
         }            
     }
@@ -72,7 +72,7 @@ export default class ObjectPointer {
         event.preventDefault();
         if (this.pressed) {
             this.onPointerUpListeners[this.pressed.name]();
-            console.log(this.pressed.name + ' unpressed!');
+            // console.log(this.pressed.name + ' unpressed!');
             this.pressed = null;
         }
     }
